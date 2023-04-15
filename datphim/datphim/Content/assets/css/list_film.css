@@ -1,0 +1,100 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li{
+    list-style: none;
+}
+
+.tabs{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 40px;
+}
+.nav_tab{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 3px solid #ddd;
+    width: 78.2%;
+    margin-left: 10%;
+    margin-right: 18%;
+    text-align: center;
+}
+
+.nav_tab li a{
+    display: block;
+    padding: 6px 20px;
+    text-decoration: none;
+    color: #171515;
+    position: relative;
+    font-weight: bold;
+    font-size: 25px;
+}
+.nav_tab li a::after{
+    content: "";
+    height: 3px;;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    bottom: -3px;
+    background: transparent;
+}
+.nav_tab li.active a::after, .nav_tab li:hover a::after{
+    background: #00a8ff;
+}
+.tab_film{
+    padding: 40px 0px;
+}
+
+
+.list-film{
+    /* width: 100%; */
+    display: flex;
+    /* text-align: center; */
+    /* font-weight: bold; */
+    margin-bottom: 50px;
+}
+.list-film .film{
+    width: 30%;
+    padding: 10px;
+}
+.list-film .film a{
+    text-decoration: none;
+    color: #171515;
+    overflow: hidden;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+.list-film .film p:hover {
+    color: rgb(81, 97, 133);
+}
+.list-film .film img{
+    width: 227px;
+    height:360px;
+    transition: all 0.3s ease-in-out;
+    display: block;
+    border-radius: 20px;
+}
+.list-film .price{
+    margin-top: 8px;
+}
+.list-film p{
+    font-weight: bold;
+    color: rgb(80, 136, 204);
+    font-family: inherit;
+    color: #337ab7;
+}
+.list-film .film .note{
+    font-size: 13px;
+}
+.midbanner img{
+    width: 70%;
+    /* text-align: center; */
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}

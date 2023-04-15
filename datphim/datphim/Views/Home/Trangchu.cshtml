@@ -1,0 +1,179 @@
+﻿@model IEnumerable<datphim.Models.Tb_phim>
+@{
+    ViewBag.Title = "Trangchu";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<section class="slider">
+    <div class="container">
+        <div class="slider-content">
+            <div class="slider-content-left">
+                <div class="slider-content-left-top-container">
+                    <div class="slider-content-left-top">
+                        <a href=""><img src="~/Content/assets/img/banner1.jpg" alt=""></a>
+                        <a href=""><img src="~/Content/assets/img/bannner2.jpg" alt=""></a>
+                        <a href=""><img src="~/Content/assets/img/banner3.jpg" alt=""></a>
+                        <a href=""><img src="~/Content/assets/img/banner4.jpg" alt=""></a>
+                        <a href=""><img src="~/Content/assets/img/banner5.png" alt=""></a>
+                    </div>
+                    <div class="slider-content-left-top-btn">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                </div>
+                <div class="slider-content-left-bottom">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/Content/assets/js/script.js"></script>
+
+@*View film*@
+<div class="body">
+
+    <script src="/js/script.js"></script>
+
+    <div class="tabs">
+        <ul class="nav_tab">
+            <li class="active"><a href="#menu_1">PHIM ĐANG CHIẾU</a></li>
+            <li><a href="#menu_2">PHIM SẮP CHIẾU</a></li>
+            <li><a href="#menu_3">SUẤT CHIẾU ĐẶC BIỆT</a></li>
+        </ul>
+        <div class="tab_film">
+            <div id="menu_1" class="tab_film_item">
+
+                @{
+                    int lenght = Model.Count() / 4;
+                    int count = 0;
+                    for (int i = 0; i <= lenght; i++)
+                    {
+                        <div class="list-film">
+                            @for (int j = 0; j < 4; j++)
+                            {
+                                if (count >= Model.Count())
+                                {
+                                    continue;
+
+                                }
+                                <div class="film">
+                                    <a href="/Home/Details/@Model.ElementAt(count).Ma_Phim">
+
+                                        <img src="~/Content/images/@Model.ElementAt(count).AnhBia" alt="">
+                                        <div class="price">
+                                            <p>@Model.ElementAt(count).TenPhim</p>
+                                        </div>
+                                    </a>
+                                    <div class="note">
+                                        <b>Thể loại:</b> @Model.ElementAt(count).Tb_TheLoai.TenTiengViet <br>
+                                        <b>Thời lượng:</b> @Model.ElementAt(count).ThoiLuong phút <br>
+                                        <b>Ngày khởi chiếu:</b> @Model.ElementAt(count).NgayKhoiChieu
+                                    </div>
+                                </div>
+                                count++;
+                            }
+                        </div>
+                    }
+                }
+
+                <div class="midbanner">
+                    <img src="img/banner.png" alt="">
+                </div>
+
+
+            </div>
+
+            <div id="menu_2" class="tab_film_item">
+
+                @{
+                    
+                    int count1 = 0;
+                    for (int i = 0; i <= lenght; i++)
+                    {
+                        <div class="list-film">
+                            @for (int j = 0; j < 4; j++)
+                            {
+                                if (count1 >= Model.Count())
+                                {
+                                    continue;
+
+                                }
+                                <div class="film">
+                                    <a href="/Home/Details/@Model.ElementAt(count1).Ma_Phim">
+
+                                        <img src="~/Content/images/@Model.ElementAt(count1).AnhBia" alt="">
+                                        <div class="price">
+                                            <p>@Model.ElementAt(count1).TenPhim</p>
+                                        </div>
+                                    </a>
+                                    <div class="note">
+                                        <b>Thể loại:</b> @Model.ElementAt(count1).Tb_TheLoai.TenTiengViet <br>
+                                        <b>Thời lượng:</b> @Model.ElementAt(count1).ThoiLuong phút <br>
+                                        <b>Ngày khởi chiếu:</b> @Model.ElementAt(count1).NgayKhoiChieu
+                                    </div>
+                                </div>
+
+
+                                count1++;
+                            }
+
+                        </div>
+                    }
+                }
+            </div>
+
+
+
+
+
+            <div id="menu_3" class="tab_film_item">
+
+                @{
+
+
+
+                    int count2 = 0;
+                    for (int i = 0; i <= lenght; i++)
+                    {
+                        <div class="list-film">
+                            @for (int j = 0; j < 4; j++)
+                            {
+                                if (count2 >= Model.Count())
+                                {
+                                    continue;
+
+                                }
+
+                                <div class="film">
+                                    <a href="/Home/Details/@Model.ElementAt(count2).Ma_Phim">
+
+                                        <img src="~/Content/images/@Model.ElementAt(count2).AnhBia" alt="">
+                                        <div class="price">
+                                            <p>@Model.ElementAt(count2).TenPhim</p>
+                                        </div>
+                                    </a>
+                                    <div class="note">
+                                        <b>Thể loại:</b> @Model.ElementAt(count2).Tb_TheLoai.TenTiengViet <br>
+                                        <b>Thời lượng:</b> @Model.ElementAt(count2).ThoiLuong phút <br>
+                                        <b>Ngày khởi chiếu:</b> @Model.ElementAt(count2).NgayKhoiChieu
+                                    </div>
+                                </div>
+
+
+                                count2++;
+                            }
+
+                        </div>
+
+
+                    }
+                }
+            </div>
+        </div>
+    </div>

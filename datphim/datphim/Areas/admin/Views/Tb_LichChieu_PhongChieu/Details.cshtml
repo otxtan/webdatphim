@@ -1,0 +1,54 @@
+﻿@model datphim.Models.Tb_LichChieu_PhongChieu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/Shared/dashboard.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tb_LichChieu_PhongChieu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayChieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayChieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioChieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioChieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tb_phim.TenPhim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tb_phim.TenPhim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tb_Phong.LoaiPhong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tb_Phong.LoaiPhong)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.available)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.Ma_LichChieu_PhongChieu }) |
+    @Html.ActionLink("Quay lại", "Index")
+</p>

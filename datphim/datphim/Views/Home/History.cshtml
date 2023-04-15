@@ -1,0 +1,64 @@
+﻿@model IEnumerable<datphim.Models.Tb_HoaDon>
+
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>History</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaTien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaTien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayTao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThanhTien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tb_LichChieu_PhongChieu.Ma_PhongChieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tb_NguoiDung.PassWord)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ma_HoaDon)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GiaTien)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SoLuong)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NgayTao)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ThanhTien)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tb_LichChieu_PhongChieu.Ma_PhongChieu)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tb_NguoiDung.UserName)
+    </td>
+
+</tr>
+}
+
+</table>

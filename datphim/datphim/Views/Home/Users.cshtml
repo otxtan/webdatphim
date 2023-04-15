@@ -1,0 +1,146 @@
+﻿@model datphim.Models.Tb_NguoiDung
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USER INFO</title>
+    <!-- <link rel="stylesheet" href="css/user.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container" style="padding:20px 0 150px 0 ">
+        <h2 style="margin-bottom: 50px;">Thông Tin Tài Khoản</h2>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home" style="font-size:20px ;">Thông tin tài khoản</a></li>
+            <li><a data-toggle="tab" href="#menu1" style="font-size:20px ;">Lịch sử đặt vé</a></li>
+            <li><a data-toggle="tab" href="#menu2" style="font-size:20px ;">Thay đổi thông tin tài khoản</a></li>
+            <li><a data-toggle="tab" href="#menu3" style="font-size:20px ;">Đổi mật khẩu</a></li>
+        </ul>
+
+        <div class="tab-content" style="margin-top: 50px; ">
+            <div id="home" class="tab-pane fade in active" style="padding-bottom: 150px">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Tên đăng nhập</th>
+                            <th>Họ tên</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> @Html.DisplayFor(model => model.UserName)</td>
+                            <td>@Html.DisplayFor(model => model.TenKH)</td>
+                            <td> @Html.DisplayFor(model => model.Email)</td>
+                            <td> @Html.DisplayFor(model => model.SDT)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                <div class="col-sm-12">
+                    <table id="historyBooking" class="table table-striped table-bordered dataTable no-footer" style="width:100%" role="grid" aria-describedby="historyBooking_info">
+                        <thead>
+                            <tr role="row"><th scope="col" class="sorting_asc" tabindex="0" aria-controls="historyBooking" rowspan="1" colspan="1" style="width: 60px;" aria-sort="ascending" aria-label="STT: activate to sort column descending">STT</th><th scope="col" class="sorting" tabindex="0" aria-controls="historyBooking" rowspan="1" colspan="1" style="width: 119px;" aria-label="Tên Phim: activate to sort column ascending">Tên Phim</th><th scope="col" class="sorting" tabindex="0" aria-controls="historyBooking" rowspan="1" colspan="1" style="width: 62px;" aria-label="Ghế: activate to sort column ascending">Ghế</th><th scope="col" class="sorting" tabindex="0" aria-controls="historyBooking" rowspan="1" colspan="1" style="width: 61px;" aria-label="Rạp: activate to sort column ascending">Rạp</th><th scope="col" class="sorting" tabindex="0" aria-controls="historyBooking" rowspan="1" colspan="1" style="width: 168px;" aria-label="Thời Gian Đặt: activate to sort column ascending">Thời Gian Đặt</th></tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var item in ViewBag.ls)
+                                {
+                                    <tr class="odd">
+                                        <!-- <td valign="top" colspan="6" class="dataTables_empty">No data available in table</td> -->
+                                        <td>@item.Ma_ve</td>
+                                        <td>@item.Tb_LichChieu_PhongChieu.Tb_phim.TenPhim</td>
+                                        <td>@item.Tb_PhongGhe.TenGhe</td>
+                                        <td>@item.Tb_PhongGhe.Ma_PhongChieu</td>
+                                        <td>@item.Tb_HoaDon.NgayTao</td>
+
+
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                <div class="container">
+                    <div class="title-info">
+                        <h3>Chỉnh Sửa Thông Tin Cá Nhân</h3>
+                    </div>
+                    @using (Html.BeginForm("EditUser", "Home", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                      
+
+                        <div class="form-group">
+
+                            <label for="name">Họ Và Tên:</label>
+                            @Html.EditorFor(model => model.TenKH, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập họ và tên" } })
+                            @Html.ValidationMessageFor(model => model.TenKH, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Số điện thoại:</label>
+                            @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập số điện thoại" } })
+                            @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="age">email:</label>
+
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập Email" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <button type="submit" name="insertInfo" class="btn btn-primary">Cập Nhật Thông Tin</button>
+
+                    }
+
+                </div>
+            </div>
+            <div id="menu3" class="tab-pane fade">
+                <div class="title-info">
+                    <h3>Thay Đổi Mật Khẩu</h3>
+                </div>
+
+                @using (Html.BeginForm("EditPass", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+
+
+                    <div class="form-group">
+                        <label>Mật Khẩu Hiện Tại:</label>
+                        <input class="form-control" type="password" id="newP" name="passcu" placeholder="">
+
+                    </div>
+                    <div class="form-group">
+
+                        <label>Mật Khẩu Mới:</label>
+                        <input class="form-control" type="password" id="newP" name="passmoi" placeholder="">
+                    </div>
+                    <button type="submit" name="insertInfo" class="btn btn-primary">Cập Nhật Thông Tin</button>
+
+                }
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

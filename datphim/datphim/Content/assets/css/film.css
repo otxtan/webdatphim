@@ -1,0 +1,171 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li{
+    list-style: none;
+}
+.body{
+    background-color: #ffff;
+
+}
+.main{
+    margin: 0 187px;
+    padding: 0 15px;
+}
+.main-top{
+    margin: 20px 0;
+    font-size: 20px;
+    /* font-family:Verdana, Geneva, Tahoma, sans-serif; */
+    font-weight: bold;
+    /* line-height: 1.5em; */
+}
+.main-top span{
+    color: #065e8d;
+    line-height: 2em;
+}
+.main .row .img{
+    width: 25%;
+
+}
+.row .img img{
+    width: 257px;
+    height: 407px;
+    border-radius: 20px;
+}
+.row .text{
+    width: 75%;
+    /* float: left; */
+}
+.text span{
+    font-weight: bold;
+}
+.text h1{
+    font-size: 30px;
+    font-weight: bolder;
+}
+.text p{
+    font-weight: 100;
+    font-family: sans-serif;
+    text-align: justify;
+}
+
+
+.tabs{
+    width: 100%;
+}
+.nav_tab{
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 3px solid #ddd;
+    width: 74.7%;
+    margin-left: 12%;
+    margin-right: 18%;
+    text-align: center;
+}
+
+.nav_tab li a{
+    display: block;
+    padding: 6px 20px;
+    text-decoration: none;
+    color: #171515;
+    position: relative;
+    font-weight: bold;
+    font-size: 25px;
+}
+.nav_tab li a::after{
+    content: "";
+    height: 3px;;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    bottom: -3px;
+    background: transparent;
+}
+.nav_tab li.active a::after, .nav_tab li:hover a::after{
+    background: #00a8ff;
+}
+.tab_film{
+    padding: 40px 0px;
+}
+.row span{
+    font-weight: bold;
+}
+
+.trailer{
+    height: 725px;
+    background-color: #3c3e4d;
+}
+.trailer .text{
+    width: 9%;
+    margin-left: 45%;
+
+}
+.trailer .text h1{
+    font-size: 33;
+    color: #fff;
+    line-height: 2em;
+    border-bottom: 4px solid #00a8ff;
+    /* margin-top: 50px; */
+    padding-top: 20px;
+}
+.trailer .link{
+    margin-top: 50px;
+    text-align: center;
+}
+.trailer .comment{
+    width: 66%;
+    height: 210px;
+    margin-left: 17%;
+    padding-top: 30px;
+}
+.first{
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid white;
+
+}
+.comment .first span{
+    font-size: 13px;
+    font-weight: bolder;
+    padding: 0 10px;
+}
+
+.second{
+    width: 100%;
+    height: 90px;
+    margin-top: 30px;
+    border-bottom: 1px solid white;
+
+}
+.second .avt{
+    margin:10px 0 0 10px;
+
+    width: 4%;
+    margin-bottom: 45px;
+    
+}
+.second .cmt{
+    width: 94.5%;
+    height: 50px;
+}
+.second textarea{
+    font-size: 14px;
+    padding: 12px 8px;
+}
+.third{
+    width: 100%;
+    height: 50px;
+    margin-left: 10px;
+}
+.third a{
+    text-decoration: none;
+    margin-left: 10px;
+}
+.third a:hover{
+    text-decoration: underline;
+}

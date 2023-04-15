@@ -1,0 +1,219 @@
+﻿@model datphim.Models.Tb_phim
+@{
+
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết phim</title>
+    <link rel="stylesheet" href="~/Content/assets/css/film.css">
+
+    <link rel="stylesheet" href="~/Content/assets/css/header-footer.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="~/Content/assets/fontawesome-free-6.1.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+
+
+    <div class="body">
+        <div class="main">
+            <div class="main-top">
+                
+                <span class="color1"> <a href="~/Home/TrangChu" style="text-decoration: none; color: #065e8d " >Trang chủ</a> </span>>
+                <span class="color1"> @Html.DisplayFor(model => model.TenPhim) </span>
+            </div>
+            <div class="row">
+                <div class="img">
+                    <img src="~/Content/images/@Html.DisplayFor(model => model.AnhBia)" alt="ảnh bìa" />
+                </div>
+                <div class="text">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-16 padding-xs-top-15">
+                        <h1 class="bold no-margin margin-bottom-15">
+                            @Html.DisplayFor(model => model.TenPhim)
+
+                        </h1>
+
+                        <p class="margin-bottom-15 font-lg font-family-san text-justify">
+                            @Html.DisplayFor(model => model.NoiDung)
+                        </p>
+
+                        <div class="row font-lg font-family-san font-xs-14">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <span class="bold font-transform-uppercase" style="width: 33%;">
+                                    ĐẠO DIỄN:
+                                </span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10" style="width: 65%;">@Html.DisplayFor(model => model.DaoDien)</div>
+                        </div>
+                        <div class="row font-lg font-family-san font-xs-14">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <span class="bold font-transform-uppercase" style="width: 33%;">
+                                    DIỄN VIÊN:
+                                </span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10" style="width: 65%;"> @Html.DisplayFor(model => model.DienVien)</div>
+                        </div>
+                        <div class="row font-lg font-family-san font-xs-14">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <span class="bold font-transform-uppercase" style="width: 33%;">
+                                    THỂ LOẠI:
+                                </span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10" style="width: 65%;">@Html.DisplayNameFor(model => model.Tb_TheLoai.TenTiengViet)</div>
+                        </div>
+                        <div class="row font-lg font-family-san font-xs-14">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <span class="bold font-transform-uppercase" style="width: 33%;">
+                                    THỜI LƯỢNG:
+                                </span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10" style="width: 65%;">  @Html.DisplayNameFor(model => model.ThoiLuong) phút</div>
+                        </div>
+                        <div class="row font-lg font-family-san font-xs-14">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <span class="bold font-transform-uppercase" style="width: 33%;">
+                                    NGÔN NGỮ:
+                                </span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10" style="width: 65%;"> @Html.DisplayFor(model => model.NgonNgu)</div>
+                        </div>
+                        <div class="row font-lg font-family-san font-xs-14">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <span class="bold font-transform-uppercase" style="width: 33%;">
+                                    NGÀY KHỞI CHIẾU:
+                                </span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10" style="width: 65%;">@{string ngaykhoichieu = Convert.ToString(@Html.DisplayFor(model => model.NgayKhoiChieu)); DateTime enteredDate = DateTime.Parse(ngaykhoichieu);} @enteredDate.ToString("d-MM-yyyy")</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="tabs">
+                <ul class="nav_tab">
+                    @{
+                        var count = 0;
+                        foreach (var i in ViewBag.LichChieu)
+                        {
+                            count++;
+                            if (count == 1)
+                            {
+                                <li class="active"><a href="#menu_@count"><span> @i.ToString("dd/MM/yyyy")</span></a></li>
+
+                            }
+                            else
+                            {
+                                <li><a href="#menu_@count"><span> @i.ToString("dd/MM/yyyy")</span></a></li>
+                            }
+                        }
+
+                    }
+                </ul>
+            </div>
+
+
+            <div class="tab-time">
+                @{
+                    var count1 = 0;
+                    var solan = 0;
+                    for (int i = 0; i < ViewBag.LichChieu.Count; i++)
+                    {
+                        count1++;
+                        <div id="menu_@count1" class="tab-time-item">
+                            <div class="row" style="margin-top: 50px;">
+                                @{
+                                    for (int j = solan; j <= ViewBag.GioChieu.Count; j++)
+                                    {                                      
+                                        
+                                       
+                                        if ((solan + 1) < ViewBag.GioChieu.Count)
+                                        {
+
+                                            if (ViewBag.GioChieu[solan].NgayChieu != ViewBag.GioChieu[solan + 1].NgayChieu)
+                                            {
+                                                <div class="btn" style="width:12.25%">
+                                                    <a href="~/Home/ChonGhe?Ma_LichChieu_PhongChieu=@ViewBag.GioChieu[solan].Ma_LichChieu_PhongChieu&Ma_PhongChieu=@ViewBag.GioChieu[solan].Ma_PhongChieu"><button class="btn btn-primary col-3 me-2" style="width:100%;height: 35px;background-color:#cecece ;border-color: #cecece;"> @ViewBag.GioChieu[solan].GioChieu</button></a>
+
+                                                </div>
+                                                solan++;
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                <div class="btn" style="width:12.25%">
+                                                    <a href="~/Home/ChonGhe?Ma_LichChieu_PhongChieu=@ViewBag.GioChieu[solan].Ma_LichChieu_PhongChieu&Ma_PhongChieu=@ViewBag.GioChieu[solan].Ma_PhongChieu"><button class="btn btn-primary col-3 me-2" style="width:100%;height: 35px;background-color:#cecece ;border-color: #cecece;"> @ViewBag.GioChieu[solan].GioChieu</button></a>
+
+                                                </div>
+                                                solan++;
+                                            }
+                                        }
+                                        else if (solan + 1 == ViewBag.GioChieu.Count)
+                                        {
+                                            <div class="btn" style="width:12.25%">
+
+                                                <a href="~/Home/ChonGhe?Ma_LichChieu_PhongChieu=@ViewBag.GioChieu[solan].Ma_LichChieu_PhongChieu&Ma_PhongChieu=@ViewBag.GioChieu[solan].Ma_PhongChieu"><button class="btn btn-primary col-3 me-2" style="width:100%;height: 35px;background-color:#cecece ;border-color: #cecece;"> @ViewBag.GioChieu[solan].GioChieu</button></a>
+
+                                            </div>
+                                            solan++;
+                                        }
+                                    }
+                                }
+                            </div>
+                        </div>
+
+                    }
+                }
+
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="trailer">
+            <div class="text">
+                <h1>TRAILER</h1>
+            </div>
+            <div class="link">
+                <iframe width="830" height="315" src="@Html.DisplayFor(model => model.Trailer)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="comment">
+                <div class="first">
+                    <span>0 bình luận</span>
+                </div>
+                <div class="second">
+                    <img src="img/avata.jpg" alt="" class="avt">
+                    <textarea name="" id="" class="cmt" placeholder="Viết bình luận..."></textarea>
+                </div>
+                <div class="third">
+                    <i class="fab fa-facebook-f"></i>
+                    <a href="#" class="fb">Plugin bình luận trên Facebook</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.tab-time-item').hide();
+        $('.tab-time-item:first-child').fadeIn();
+        $('.nav_tab li').click(function () {
+            $('.nav_tab li').removeClass('active');
+            $(this).addClass('active');
+            let id_tab_film = $(this).children('a').attr('href');
+            $('.tab-time-item').hide();
+            $(id_tab_film).fadeIn();
+            return false;
+        });
+    });
+</script>
+</html>

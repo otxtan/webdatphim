@@ -1,0 +1,27 @@
+﻿@model datphim.Models.Tb_PhanLoaiPhim
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/Shared/dashboard.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tb_PhanLoaiPhim</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenTiengViet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTiengViet)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Ma_Loai }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

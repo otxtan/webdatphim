@@ -1,0 +1,90 @@
+﻿@model IEnumerable<datphim.Models.Tb_Ve>
+
+
+
+@{
+    ViewBag.Title = "Index";
+   
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<div class="d-flex flex-column " style="margin:auto;width:70%;padding: 50px 0 150px 0px;">
+
+    <h2 style="text-align:center">Thanh Toán thành công</h2>
+    <br />
+    <table class="table ">
+        <tr>
+            <th>Người dùng</th>
+            <th>Mã lịch chiếu</th>
+            <th>Giá tiền</th>
+            <th>Số lượng</th>
+            <th>Ngày Tạo</th>
+            <th>Thành tiền</th>
+        </tr>
+        <tr>
+            <td>@ViewBag.HoaDon[0].UserName</td>
+            <td>@ViewBag.HoaDon[0].Ma_LichChieu_PhongChieu</td>
+            <td> @ViewBag.HoaDon[0].GiaTien</td>
+            <td>  @ViewBag.HoaDon[0].SoLuong</td>
+            <td> @ViewBag.HoaDon[0].NgayTao</td>
+            <td> @ViewBag.HoaDon[0].ThanhTien</td>
+
+        </tr>
+
+    </table>
+    <br />
+
+    <h3>Mã Vé</h3>
+
+    <table class="table">
+        <tr>
+            <th>
+                Mã vé
+            </th>
+            <th>
+                Mã hóa đơn
+            </th>
+            <th>
+                Ngày chiếu
+            </th>
+            <th>
+                giờ chiếu
+            </th>
+
+            <th>
+                Tên ghế
+            </th>
+            <th>
+                Phòng chiếu
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ma_ve)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ma_HoaDon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tb_LichChieu_PhongChieu.NgayChieu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tb_LichChieu_PhongChieu.GioChieu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tb_PhongGhe.TenGhe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tb_PhongGhe.Ma_PhongChieu)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>
+

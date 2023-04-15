@@ -1,0 +1,121 @@
+﻿@model datphim.Models.Tb_phim
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/Shared/dashboard.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tb_phim</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenPhim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPhim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChatLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChatLuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DaoDien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DaoDien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DienVien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienVien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayKhoiChieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayKhoiChieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThoiLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThoiLuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgonNgu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgonNgu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhBia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhBia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trailer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trailer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tb_PhanLoaiPhim.TenTiengViet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tb_PhanLoaiPhim.TenTiengViet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tb_TheLoai.TenTiengViet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tb_TheLoai.TenTiengViet)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.available)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.available)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Ma_Phim }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

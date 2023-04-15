@@ -1,0 +1,52 @@
+﻿@model IEnumerable<datphim.Models.Tb_LoaiGhe>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/dashboard.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <!--   Kitchen Sink -->
+        <div class="card">
+            <div class="card-action">
+                Loại ghế
+            </div>
+            <div class="card-content">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TenLoai)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GiaTien)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TenLoai)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GiaTien)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Ma_LoaiGhe }, new { @class = "btn btn-info" }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.Ma_LoaiGhe }, new { @class = "btn btn-primary" }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.Ma_LoaiGhe }, new { @class = "btn btn-warning" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>

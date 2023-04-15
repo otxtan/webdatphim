@@ -1,0 +1,127 @@
+﻿@model IEnumerable<datphim.Models.Tb_phim>
+
+@{
+    ViewBag.Title = "Danh sách phim";
+    Layout = "~/Areas/admin/Views/Shared/dashboard.cshtml";
+}
+
+<hr />
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create",null,new {@class="btn btn-default" })
+</p>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <!--   Kitchen Sink -->
+        <div class="card">
+            <div class="card-action">
+                Danh sách phim
+            </div>
+            <div class="card-content">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Tên phim
+                                </th>
+                                <th>
+                                    chất lượng
+                                </th>
+                                <th>
+                                    Đạo diễn
+                                </th>
+                                <th>
+                                    Diễn viên
+                                </th>
+                                <th>
+                                    Ngày khởi chiếu
+                                </th>
+                                <th>
+                                    Thời lượng
+                                </th>
+                                <th>
+                                    Ngôn ngữ
+                                </th>
+                                <th>
+                                    Nội dung
+                                </th>
+                                <th>
+                                    Ảnh bìa
+                                </th>
+                                <th>
+                                    Trailer
+                                </th>
+                                <th>
+                                    Loại phim
+                                </th>
+                                <th>
+                                    Thể Loại
+                                </th>
+                                <th>
+                                    available
+                                </th>
+                                <th>
+                                    
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenPhim)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ChatLuong)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DaoDien)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DienVien)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NgayKhoiChieu)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ThoiLuong)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NgonNgu)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NoiDung)
+                                </td>
+                                <td>
+                                    <img src="~/Content/images/@Html.DisplayFor(modelItem => item.AnhBia)" alt="ảnh bìa" style="width:100%" />
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Trailer)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tb_PhanLoaiPhim.TenTiengViet)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tb_TheLoai.TenTiengViet)
+                                </td>
+                                <td>
+                                   
+                                    @item.available
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Sửa", "Edit", new { id = item.Ma_Phim }, new { @class = "btn btn-info" }) |
+                                    @Html.ActionLink("Thông tin", "Details", new { id = item.Ma_Phim }, new { @class = "btn btn-primary" }) |
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.Ma_Phim }, new { @class = "btn btn-warning" })
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>

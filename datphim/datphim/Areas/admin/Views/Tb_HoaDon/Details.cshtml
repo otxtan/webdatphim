@@ -1,0 +1,75 @@
+﻿@model datphim.Models.Tb_HoaDon
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/Shared/dashboard.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tb_HoaDon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaTien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaTien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayTao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayTao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThanhTien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThanhTien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tb_LichChieu_PhongChieu.Ma_PhongChieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tb_LichChieu_PhongChieu.Ma_PhongChieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tb_LoaiGhe.TenLoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tb_LoaiGhe.TenLoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tb_NguoiDung.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tb_NguoiDung.UserName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Ma_HoaDon }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,48 @@
+﻿
+@model IEnumerable<datphim.Models.Tb_LichChieu_PhongChieu>
+
+@{
+    ViewBag.Title = "Trangchu";
+    Layout = "~/Views/Shared/Index.cshtml";
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayChieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GioChieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tb_phim.TenPhim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tb_Phong.LoaiPhong)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayChieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioChieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tb_phim.TenPhim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tb_Phong.LoaiPhong)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Ma_LichChieu_PhongChieu }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Ma_LichChieu_PhongChieu }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Ma_LichChieu_PhongChieu })
+            </td>
+        </tr>
+    }
+
+</table>

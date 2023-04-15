@@ -1,0 +1,47 @@
+﻿
+
+    <div class="logo">
+        <a href="~/home/trangchu"><img src="~/Content/assets/img/logo/logo.png"></a>
+    </div>
+
+    <nav class="menu">
+        <ul class="menu__list">
+            <li class="menu__list-item">
+                <a href="#">LỊCH CHIẾU THEO RẠP</a>
+            </li>
+            <li class="menu__list-item">
+                <a href="~/Home/TrangChu">PHIM</a>
+            </li>
+            <li class="menu__list-item">
+                <a href="#">RẠP</a>
+            </li>
+            <li class="menu__list-item">
+                <a href="#">GIÁ VÉ</a>
+            </li>
+            <li class="menu__list-item">
+                <a href="#">TIN MỚI VÀ ƯU ĐÃI</a>
+            </li>
+            <li class="menu__list-item">
+                @{
+                    if (Session["UserName"] != null)
+                    {
+                        @Html.ActionLink("Thành Viên", "Users", "Home")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Thành Viên", "Login", "Home")
+                    }
+                }
+
+            </li>
+            <li class="menu__list-item">
+                @{
+                    if (Session["UserName"] != null)
+                    {
+                        @Html.ActionLink("Đăng xuất", "Logout", "Home")
+                    }
+                }
+
+            </li>
+        </ul>
+    </nav>

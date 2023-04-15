@@ -1,0 +1,75 @@
+﻿@model IEnumerable<datphim.Models.Tb_LichChieu_PhongChieu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/dashboard.cshtml";
+}
+
+
+<hr />
+<p>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-default" })
+</p>
+
+<div class="row">
+    <div class="col-md-12">
+        <!--   Kitchen Sink -->
+        <div class="card">
+            <div class="card-action">
+                Lịch chiếu
+            </div>
+            <div class="card-content">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.NgayChieu)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GioChieu)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Tb_phim.TenPhim)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Tb_Phong.LoaiPhong)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.available)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NgayChieu)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GioChieu)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tb_phim.TenPhim)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tb_Phong.Ma_PhongChieu)
+                                </td>
+                                <td>
+                                    @item.available
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Ma_LichChieu_PhongChieu }, new { @class = "btn btn-info" }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.Ma_LichChieu_PhongChieu }, new { @class = "btn btn-primary" }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Ma_LichChieu_PhongChieu }, new { @class = "btn btn-warning" })
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
