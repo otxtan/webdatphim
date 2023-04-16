@@ -78,9 +78,10 @@ namespace datphim.Areas.admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Ma_LichChieu_PhongChieu = new SelectList(db.Tb_LichChieu_PhongChieu, "Ma_LichChieu_PhongChieu", "Ma_PhongChieu", tb_HoaDon.Ma_LichChieu_PhongChieu);
+            ViewBag.Ma_LichChieu_PhongChieu = new SelectList(db.Tb_LichChieu_PhongChieu, "Ma_LichChieu_PhongChieu", "Ma_LichChieu_PhongChieu", tb_HoaDon.Ma_LichChieu_PhongChieu);
             
-            ViewBag.UserName = new SelectList(db.Tb_NguoiDung, "UserName", "PassWord", tb_HoaDon.UserName);
+            ViewBag.UserName = new SelectList(db.Tb_NguoiDung, "UserName", "UserName", tb_HoaDon.UserName);
+            ViewBag.Ma_TT = new SelectList(db.Tb_ThanhToan, "Ma_TT", "TenTiengViet", tb_HoaDon.Ma_TT);
             return View(tb_HoaDon);
         }
 
@@ -89,19 +90,22 @@ namespace datphim.Areas.admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Ma_HoaDon,UserName,Ma_LichChieu_PhongChieu,Ma_LoaiGhe,GiaTien,SoLuong,NgayTao,ThanhTien")] Tb_HoaDon tb_HoaDon)
+        public ActionResult Edit([Bind(Include = "Ma_HoaDon,UserName,Ma_LichChieu_PhongChieu,Ma_LoaiGhe,GiaTien,SoLuong,NgayTao,ThanhTien,TrangThai,Ma_TT")] Tb_HoaDon tb_HoaDon)
         {
             if (ModelState.IsValid)
             {
-                tb_HoaDon.NgayTao = DateTime.Now;
+                if(tb_HoaDon.NgayTao!=null)
+                    tb_HoaDon.NgayTao = DateTime.Now;
                 db.Entry(tb_HoaDon).State = EntityState.Modified;
 
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            
+
             ViewBag.Ma_LichChieu_PhongChieu = new SelectList(db.Tb_LichChieu_PhongChieu, "Ma_LichChieu_PhongChieu", "Ma_PhongChieu", tb_HoaDon.Ma_LichChieu_PhongChieu);
             
-            ViewBag.UserName = new SelectList(db.Tb_NguoiDung, "UserName", "PassWord", tb_HoaDon.UserName);
+            ViewBag.UserName = new SelectList(db.Tb_NguoiDung, "UserName", "UserName", tb_HoaDon.UserName);
             return View(tb_HoaDon);
         }
 

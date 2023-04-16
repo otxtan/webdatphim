@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cd5ec32ff90f4c078c9af30e741a5b3d" Name="Diagram1" ZoomLevel="93">
+        <EntityTypeShape EntityType="datphimchuan1Model.sysdiagram" Width="1.5" PointX="8.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="datphimchuan1Model.Tb_HoaDon" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="datphimchuan1Model.Tb_LichChieu_PhongChieu" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="datphimchuan1Model.Tb_LoaiGhe" Width="1.5" PointX="3.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="datphimchuan1Model.Tb_NguoiDung" Width="1.5" PointX="6" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="datphimchuan1Model.Tb_PhanLoaiPhim" Width="1.5" PointX="1.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="datphimchuan1Model.Tb_phim" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="datphimchuan1Model.Tb_Phong" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="datphimchuan1Model.Tb_PhongGhe" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="datphimchuan1Model.Tb_ThanhToan" Width="1.5" PointX="6" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="datphimchuan1Model.Tb_TheLoai" Width="1.5" PointX="1.5" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="datphimchuan1Model.Tb_Ve" Width="1.5" PointX="10.5" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="datphimchuan1Model.FK__Tb_HoaDon__Ma_Li__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="datphimchuan1Model.FK__Tb_HoaDon__UserN__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="datphimchuan1Model.FK__Tb_Ve__Ma_HoaDon__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="datphimchuan1Model.FK_Tb_HoaDon_Tb_ThanhToan" ManuallyRouted="false" />
+        <AssociationConnector Association="datphimchuan1Model.FK__Tb_LichCh__Ma_Ph__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="datphimchuan1Model.FK__Tb_LichCh__Ma_Ph__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="datphimchuan1Model.FK__Tb_Ve__Ma_LichCh__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="datphimchuan1Model.FK__Tb_PhongG__Ma_Lo__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="datphimchuan1Model.FK__Tb_phim__Ma_Loai__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="datphimchuan1Model.FK__Tb_phim__Ma_TheL__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="datphimchuan1Model.FK__Tb_PhongG__Ma_Ph__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="datphimchuan1Model.FK__Tb_Ve__Ma_PhongG__3E52440B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

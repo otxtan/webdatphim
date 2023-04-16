@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="datphimchuanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="datphimchuan1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="dbo_Tb_ThanhToan">
@@ -32,7 +32,7 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
           <Property Name="SoLuong" Type="int" />
           <Property Name="NgayTao" Type="datetime" />
           <Property Name="ThanhTien" Type="bigint" />
-          <Property Name="Ma_TT" Type="nchar" MaxLength="50" />
+          <Property Name="Ma_TT" Type="bigint" />
           <Property Name="TrangThai" Type="bit" />
         </EntityType>
         <EntityType Name="Tb_LichChieu_PhongChieu">
@@ -113,7 +113,7 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
           <Key>
             <PropertyRef Name="Ma_TT" />
           </Key>
-          <Property Name="Ma_TT" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ma_TT" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenTiengViet" Type="nvarchar" MaxLength="100" />
           <Property Name="TenNguoiNhan" Type="nvarchar" MaxLength="50" />
           <Property Name="SoTaiKhoan" Type="nvarchar" MaxLength="50" />
@@ -266,7 +266,7 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tb_HoaDon_Tb_HoaDon">
+        <Association Name="FK_Tb_HoaDon_Tb_ThanhToan">
           <End Role="Tb_ThanhToan" Type="Self.Tb_ThanhToan" Multiplicity="0..1" />
           <End Role="Tb_HoaDon" Type="Self.Tb_HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -278,7 +278,7 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="datphimchuanModelStoreContainer">
+        <EntityContainer Name="datphimchuan1ModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_HoaDon" EntityType="Self.Tb_HoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tb_LichChieu_PhongChieu" EntityType="Self.Tb_LichChieu_PhongChieu" Schema="dbo" store:Type="Tables" />
@@ -335,15 +335,26 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
             <End Role="Tb_PhongGhe" EntitySet="Tb_PhongGhe" />
             <End Role="Tb_Ve" EntitySet="Tb_Ve" />
           </AssociationSet>
-          <AssociationSet Name="FK_Tb_HoaDon_Tb_HoaDon" Association="Self.FK_Tb_HoaDon_Tb_HoaDon">
+          <AssociationSet Name="FK_Tb_HoaDon_Tb_ThanhToan" Association="Self.FK_Tb_HoaDon_Tb_ThanhToan">
             <End Role="Tb_ThanhToan" EntitySet="Tb_ThanhToan" />
             <End Role="Tb_HoaDon" EntitySet="Tb_HoaDon" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="datphimchuanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="datphimchuan1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="Tb_HoaDon">
           <Key>
             <PropertyRef Name="Ma_HoaDon" />
@@ -355,12 +366,12 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
           <Property Name="SoLuong" Type="Int32" />
           <Property Name="NgayTao" Type="DateTime" Precision="3" />
           <Property Name="ThanhTien" Type="Int64" />
+          <Property Name="Ma_TT" Type="Int64" />
+          <Property Name="TrangThai" Type="Boolean" />
           <NavigationProperty Name="Tb_LichChieu_PhongChieu" Relationship="Self.FK__Tb_HoaDon__Ma_Li__3A81B327" FromRole="Tb_HoaDon" ToRole="Tb_LichChieu_PhongChieu" />
           <NavigationProperty Name="Tb_NguoiDung" Relationship="Self.FK__Tb_HoaDon__UserN__398D8EEE" FromRole="Tb_HoaDon" ToRole="Tb_NguoiDung" />
           <NavigationProperty Name="Tb_Ve" Relationship="Self.FK__Tb_Ve__Ma_HoaDon__3F466844" FromRole="Tb_HoaDon" ToRole="Tb_Ve" />
-          <Property Name="Ma_TT" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="TrangThai" Type="Boolean" />
-          <NavigationProperty Name="Tb_ThanhToan" Relationship="datphimchuanModel.FK_Tb_HoaDon_Tb_HoaDon" FromRole="Tb_HoaDon" ToRole="Tb_ThanhToan" />
+          <NavigationProperty Name="Tb_ThanhToan" Relationship="Self.FK_Tb_HoaDon_Tb_ThanhToan" FromRole="Tb_HoaDon" ToRole="Tb_ThanhToan" />
         </EntityType>
         <EntityType Name="Tb_LichChieu_PhongChieu">
           <Key>
@@ -396,8 +407,8 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
           <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="NgaySinh" Type="DateTime" Precision="0" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Tb_HoaDon" Relationship="Self.FK__Tb_HoaDon__UserN__398D8EEE" FromRole="Tb_NguoiDung" ToRole="Tb_HoaDon" />
           <Property Name="available" Type="Boolean" />
+          <NavigationProperty Name="Tb_HoaDon" Relationship="Self.FK__Tb_HoaDon__UserN__398D8EEE" FromRole="Tb_NguoiDung" ToRole="Tb_HoaDon" />
         </EntityType>
         <EntityType Name="Tb_PhanLoaiPhim">
           <Key>
@@ -450,6 +461,16 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
           <NavigationProperty Name="Tb_LoaiGhe" Relationship="Self.FK__Tb_PhongG__Ma_Lo__300424B4" FromRole="Tb_PhongGhe" ToRole="Tb_LoaiGhe" />
           <NavigationProperty Name="Tb_Phong" Relationship="Self.FK__Tb_PhongG__Ma_Ph__30F848ED" FromRole="Tb_PhongGhe" ToRole="Tb_Phong" />
           <NavigationProperty Name="Tb_Ve" Relationship="Self.FK__Tb_Ve__Ma_PhongG__3E52440B" FromRole="Tb_PhongGhe" ToRole="Tb_Ve" />
+        </EntityType>
+        <EntityType Name="Tb_ThanhToan">
+          <Key>
+            <PropertyRef Name="Ma_TT" />
+          </Key>
+          <Property Name="Ma_TT" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenTiengViet" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TenNguoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SoTaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tb_HoaDon" Relationship="Self.FK_Tb_HoaDon_Tb_ThanhToan" FromRole="Tb_ThanhToan" ToRole="Tb_HoaDon" />
         </EntityType>
         <EntityType Name="Tb_TheLoai">
           <Key>
@@ -504,6 +525,18 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
             </Principal>
             <Dependent Role="Tb_Ve">
               <PropertyRef Name="Ma_HoaDon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tb_HoaDon_Tb_ThanhToan">
+          <End Role="Tb_ThanhToan" Type="Self.Tb_ThanhToan" Multiplicity="0..1" />
+          <End Role="Tb_HoaDon" Type="Self.Tb_HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_ThanhToan">
+              <PropertyRef Name="Ma_TT" />
+            </Principal>
+            <Dependent Role="Tb_HoaDon">
+              <PropertyRef Name="Ma_TT" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -603,7 +636,8 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="datphimchuanEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="datphimchuan1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Tb_HoaDon" EntityType="Self.Tb_HoaDon" />
           <EntitySet Name="Tb_LichChieu_PhongChieu" EntityType="Self.Tb_LichChieu_PhongChieu" />
           <EntitySet Name="Tb_LoaiGhe" EntityType="Self.Tb_LoaiGhe" />
@@ -612,6 +646,7 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
           <EntitySet Name="Tb_phim" EntityType="Self.Tb_phim" />
           <EntitySet Name="Tb_Phong" EntityType="Self.Tb_Phong" />
           <EntitySet Name="Tb_PhongGhe" EntityType="Self.Tb_PhongGhe" />
+          <EntitySet Name="Tb_ThanhToan" EntityType="Self.Tb_ThanhToan" />
           <EntitySet Name="Tb_TheLoai" EntityType="Self.Tb_TheLoai" />
           <EntitySet Name="Tb_Ve" EntityType="Self.Tb_Ve" />
           <AssociationSet Name="FK__Tb_HoaDon__Ma_Li__3A81B327" Association="Self.FK__Tb_HoaDon__Ma_Li__3A81B327">
@@ -625,6 +660,10 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
           <AssociationSet Name="FK__Tb_Ve__Ma_HoaDon__3F466844" Association="Self.FK__Tb_Ve__Ma_HoaDon__3F466844">
             <End Role="Tb_HoaDon" EntitySet="Tb_HoaDon" />
             <End Role="Tb_Ve" EntitySet="Tb_Ve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tb_HoaDon_Tb_ThanhToan" Association="Self.FK_Tb_HoaDon_Tb_ThanhToan">
+            <End Role="Tb_ThanhToan" EntitySet="Tb_ThanhToan" />
+            <End Role="Tb_HoaDon" EntitySet="Tb_HoaDon" />
           </AssociationSet>
           <AssociationSet Name="FK__Tb_LichCh__Ma_Ph__33D4B598" Association="Self.FK__Tb_LichCh__Ma_Ph__33D4B598">
             <End Role="Tb_phim" EntitySet="Tb_phim" />
@@ -658,56 +697,27 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
             <End Role="Tb_PhongGhe" EntitySet="Tb_PhongGhe" />
             <End Role="Tb_Ve" EntitySet="Tb_Ve" />
           </AssociationSet>
-          <EntitySet Name="sysdiagrams" EntityType="datphimchuanModel.sysdiagram" />
-          <EntitySet Name="Tb_ThanhToan" EntityType="datphimchuanModel.Tb_ThanhToan" />
-          <AssociationSet Name="FK_Tb_HoaDon_Tb_HoaDon" Association="datphimchuanModel.FK_Tb_HoaDon_Tb_HoaDon">
-            <End Role="Tb_ThanhToan" EntitySet="Tb_ThanhToan" />
-            <End Role="Tb_HoaDon" EntitySet="Tb_HoaDon" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="Tb_ThanhToan">
-          <Key>
-            <PropertyRef Name="Ma_TT" />
-          </Key>
-          <Property Name="Ma_TT" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="TenTiengViet" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TenNguoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SoTaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Tb_HoaDon" Relationship="datphimchuanModel.FK_Tb_HoaDon_Tb_HoaDon" FromRole="Tb_ThanhToan" ToRole="Tb_HoaDon" />
-        </EntityType>
-        <Association Name="FK_Tb_HoaDon_Tb_HoaDon">
-          <End Type="datphimchuanModel.Tb_ThanhToan" Role="Tb_ThanhToan" Multiplicity="0..1" />
-          <End Type="datphimchuanModel.Tb_HoaDon" Role="Tb_HoaDon" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tb_ThanhToan">
-              <PropertyRef Name="Ma_TT" />
-            </Principal>
-            <Dependent Role="Tb_HoaDon">
-              <PropertyRef Name="Ma_TT" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="datphimchuanModelStoreContainer" CdmEntityContainer="datphimchuanEntities">
+        <EntityContainerMapping StorageEntityContainer="datphimchuan1ModelStoreContainer" CdmEntityContainer="datphimchuan1Entities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="datphimchuan1Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Tb_HoaDon">
-            <EntityTypeMapping TypeName="datphimchuanModel.Tb_HoaDon">
+            <EntityTypeMapping TypeName="datphimchuan1Model.Tb_HoaDon">
               <MappingFragment StoreEntitySet="Tb_HoaDon">
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-                <ScalarProperty Name="Ma_TT" ColumnName="Ma_TT" />
                 <ScalarProperty Name="Ma_HoaDon" ColumnName="Ma_HoaDon" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Ma_LichChieu_PhongChieu" ColumnName="Ma_LichChieu_PhongChieu" />
@@ -715,11 +725,13 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
                 <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
                 <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+                <ScalarProperty Name="Ma_TT" ColumnName="Ma_TT" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tb_LichChieu_PhongChieu">
-            <EntityTypeMapping TypeName="datphimchuanModel.Tb_LichChieu_PhongChieu">
+            <EntityTypeMapping TypeName="datphimchuan1Model.Tb_LichChieu_PhongChieu">
               <MappingFragment StoreEntitySet="Tb_LichChieu_PhongChieu">
                 <ScalarProperty Name="Ma_LichChieu_PhongChieu" ColumnName="Ma_LichChieu_PhongChieu" />
                 <ScalarProperty Name="Ma_Phim" ColumnName="Ma_Phim" />
@@ -731,7 +743,7 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tb_LoaiGhe">
-            <EntityTypeMapping TypeName="datphimchuanModel.Tb_LoaiGhe">
+            <EntityTypeMapping TypeName="datphimchuan1Model.Tb_LoaiGhe">
               <MappingFragment StoreEntitySet="Tb_LoaiGhe">
                 <ScalarProperty Name="Ma_LoaiGhe" ColumnName="Ma_LoaiGhe" />
                 <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
@@ -740,20 +752,20 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tb_NguoiDung">
-            <EntityTypeMapping TypeName="datphimchuanModel.Tb_NguoiDung">
+            <EntityTypeMapping TypeName="datphimchuan1Model.Tb_NguoiDung">
               <MappingFragment StoreEntitySet="Tb_NguoiDung">
-                <ScalarProperty Name="available" ColumnName="available" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="PassWord" ColumnName="PassWord" />
                 <ScalarProperty Name="TenKH" ColumnName="TenKH" />
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
                 <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="available" ColumnName="available" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tb_PhanLoaiPhim">
-            <EntityTypeMapping TypeName="datphimchuanModel.Tb_PhanLoaiPhim">
+            <EntityTypeMapping TypeName="datphimchuan1Model.Tb_PhanLoaiPhim">
               <MappingFragment StoreEntitySet="Tb_PhanLoaiPhim">
                 <ScalarProperty Name="Ma_Loai" ColumnName="Ma_Loai" />
                 <ScalarProperty Name="TenTiengViet" ColumnName="TenTiengViet" />
@@ -761,7 +773,7 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tb_phim">
-            <EntityTypeMapping TypeName="datphimchuanModel.Tb_phim">
+            <EntityTypeMapping TypeName="datphimchuan1Model.Tb_phim">
               <MappingFragment StoreEntitySet="Tb_phim">
                 <ScalarProperty Name="Ma_Phim" ColumnName="Ma_Phim" />
                 <ScalarProperty Name="TenPhim" ColumnName="TenPhim" />
@@ -781,7 +793,7 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tb_Phong">
-            <EntityTypeMapping TypeName="datphimchuanModel.Tb_Phong">
+            <EntityTypeMapping TypeName="datphimchuan1Model.Tb_Phong">
               <MappingFragment StoreEntitySet="Tb_Phong">
                 <ScalarProperty Name="Ma_PhongChieu" ColumnName="Ma_PhongChieu" />
                 <ScalarProperty Name="LoaiPhong" ColumnName="LoaiPhong" />
@@ -790,7 +802,7 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tb_PhongGhe">
-            <EntityTypeMapping TypeName="datphimchuanModel.Tb_PhongGhe">
+            <EntityTypeMapping TypeName="datphimchuan1Model.Tb_PhongGhe">
               <MappingFragment StoreEntitySet="Tb_PhongGhe">
                 <ScalarProperty Name="Ma_PhongGhe" ColumnName="Ma_PhongGhe" />
                 <ScalarProperty Name="Ma_PhongChieu" ColumnName="Ma_PhongChieu" />
@@ -799,8 +811,18 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Tb_ThanhToan">
+            <EntityTypeMapping TypeName="datphimchuan1Model.Tb_ThanhToan">
+              <MappingFragment StoreEntitySet="Tb_ThanhToan">
+                <ScalarProperty Name="Ma_TT" ColumnName="Ma_TT" />
+                <ScalarProperty Name="TenTiengViet" ColumnName="TenTiengViet" />
+                <ScalarProperty Name="TenNguoiNhan" ColumnName="TenNguoiNhan" />
+                <ScalarProperty Name="SoTaiKhoan" ColumnName="SoTaiKhoan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Tb_TheLoai">
-            <EntityTypeMapping TypeName="datphimchuanModel.Tb_TheLoai">
+            <EntityTypeMapping TypeName="datphimchuan1Model.Tb_TheLoai">
               <MappingFragment StoreEntitySet="Tb_TheLoai">
                 <ScalarProperty Name="Ma_TheLoai" ColumnName="Ma_TheLoai" />
                 <ScalarProperty Name="TenTiengViet" ColumnName="TenTiengViet" />
@@ -808,33 +830,12 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tb_Ve">
-            <EntityTypeMapping TypeName="datphimchuanModel.Tb_Ve">
+            <EntityTypeMapping TypeName="datphimchuan1Model.Tb_Ve">
               <MappingFragment StoreEntitySet="Tb_Ve">
                 <ScalarProperty Name="Ma_ve" ColumnName="Ma_ve" />
                 <ScalarProperty Name="Ma_HoaDon" ColumnName="Ma_HoaDon" />
                 <ScalarProperty Name="Ma_LichChieu_PhongChieu" ColumnName="Ma_LichChieu_PhongChieu" />
                 <ScalarProperty Name="Ma_PhongGhe" ColumnName="Ma_PhongGhe" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="datphimchuanModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tb_ThanhToan">
-            <EntityTypeMapping TypeName="datphimchuanModel.Tb_ThanhToan">
-              <MappingFragment StoreEntitySet="Tb_ThanhToan">
-                <ScalarProperty Name="SoTaiKhoan" ColumnName="SoTaiKhoan" />
-                <ScalarProperty Name="TenNguoiNhan" ColumnName="TenNguoiNhan" />
-                <ScalarProperty Name="TenTiengViet" ColumnName="TenTiengViet" />
-                <ScalarProperty Name="Ma_TT" ColumnName="Ma_TT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

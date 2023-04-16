@@ -94,7 +94,7 @@
                                     @Html.DisplayFor(modelItem => item.NgonNgu)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.NoiDung)
+                                    <p style=" width: 300px; overflow: hidden; text-overflow: ellipsis; line-height: 20px; -webkit-line-clamp: 5; display: -webkit-box; -webkit-box-orient: vertical;">@Html.DisplayFor(modelItem => item.NoiDung)</p>
                                 </td>
                                 <td>
                                     <img src="~/Content/images/@Html.DisplayFor(modelItem => item.AnhBia)" alt="ảnh bìa" style="width:100%" />

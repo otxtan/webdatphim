@@ -20,7 +20,7 @@ namespace datphim.Models
             this.Tb_HoaDon = new HashSet<Tb_HoaDon>();
         }
     
-        public string Ma_TT { get; set; }
+        public long Ma_TT { get; set; }
         public string TenTiengViet { get; set; }
         public string TenNguoiNhan { get; set; }
         public string SoTaiKhoan { get; set; }

@@ -27,7 +27,7 @@ namespace datphim.Models
         public Nullable<int> SoLuong { get; set; }
         public Nullable<System.DateTime> NgayTao { get; set; }
         public Nullable<long> ThanhTien { get; set; }
-        public string Ma_TT { get; set; }
+        public Nullable<long> Ma_TT { get; set; }
         public Nullable<bool> TrangThai { get; set; }
     
         public virtual Tb_LichChieu_PhongChieu Tb_LichChieu_PhongChieu { get; set; }
