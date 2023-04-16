@@ -1,0 +1,76 @@
+﻿@model IEnumerable<datphim.Models.Tb_ThanhToan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/dashboard.cshtml";
+}
+
+<h2>Index</h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+
+    </p>*@
+<p>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-default" })
+</p>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <!--   Kitchen Sink -->
+        <div class="card">
+            <div class="card-action">
+                Vé
+            </div>
+            <div class="card-content">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Ma_TT)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TenTiengViet)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SoTaiKhoan)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TenNguoiNhan)
+                                </th>
+                                <th>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ma_TT)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenTiengViet)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoTaiKhoan)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenNguoiNhan)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Ma_TT }, new { @class = "btn btn-info" }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.Ma_TT }, new { @class = "btn btn-primary" }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Ma_TT }, new { @class = "btn btn-warning" })
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

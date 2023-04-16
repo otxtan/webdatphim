@@ -24,6 +24,15 @@
                         <thead>
                             <tr>
                                 <th>
+                                    @Html.DisplayNameFor(model => model.Ma_HoaDon)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.UserName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Ma_LichChieu_PhongChieu)
+                                </th>
+                                <th>
                                     @Html.DisplayNameFor(model => model.GiaTien)
                                 </th>
                                 <th>
@@ -42,6 +51,13 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Tb_NguoiDung.UserName)
                                 </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Ma_TT)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TrangThai)
+                                </th>
+
                                 <th></th>
                             </tr>
                         </thead>
@@ -49,36 +65,52 @@
                             @foreach (var item in Model)
                             {
 
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.GiaTien)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.SoLuong)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.NgayTao)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ThanhTien)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Tb_LichChieu_PhongChieu.Ma_PhongChieu)
-                                    </td>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ma_HoaDon)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ma_LichChieu_PhongChieu)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GiaTien)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoLuong)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NgayTao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ThanhTien)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tb_LichChieu_PhongChieu.Ma_PhongChieu)
+                                </td>
 
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Tb_NguoiDung.UserName)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.Ma_HoaDon }, new { @class = "btn btn-info" }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.Ma_HoaDon }, new { @class = "btn btn-primary" }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.Ma_HoaDon }, new { @class = "btn btn-warning" })
-                                    </td>
-                                </tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tb_NguoiDung.UserName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tb_ThanhToan.TenTiengViet)
+                                </td>
+                                <td>
+                                    @item.TrangThai
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Ma_HoaDon }, new { @class = "btn btn-info" }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.Ma_HoaDon }, new { @class = "btn btn-primary" }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Ma_HoaDon }, new { @class = "btn btn-warning" })
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
+    </div>
+</div>

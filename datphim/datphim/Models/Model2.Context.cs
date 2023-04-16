@@ -25,6 +25,7 @@ namespace datphim.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tb_HoaDon> Tb_HoaDon { get; set; }
         public virtual DbSet<Tb_LichChieu_PhongChieu> Tb_LichChieu_PhongChieu { get; set; }
         public virtual DbSet<Tb_LoaiGhe> Tb_LoaiGhe { get; set; }
@@ -33,9 +34,8 @@ namespace datphim.Models
         public virtual DbSet<Tb_phim> Tb_phim { get; set; }
         public virtual DbSet<Tb_Phong> Tb_Phong { get; set; }
         public virtual DbSet<Tb_PhongGhe> Tb_PhongGhe { get; set; }
+        public virtual DbSet<Tb_ThanhToan> Tb_ThanhToan { get; set; }
         public virtual DbSet<Tb_TheLoai> Tb_TheLoai { get; set; }
         public virtual DbSet<Tb_Ve> Tb_Ve { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Tb_ThanhToan> Tb_ThanhToan { get; set; }
     }
 }

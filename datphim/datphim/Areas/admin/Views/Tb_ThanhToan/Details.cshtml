@@ -1,0 +1,43 @@
+﻿@model datphim.Models.Tb_ThanhToan
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/Shared/dashboard.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tb_ThanhToan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenTiengViet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTiengViet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNguoiNhan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNguoiNhan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoTaiKhoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoTaiKhoan)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Ma_TT }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
