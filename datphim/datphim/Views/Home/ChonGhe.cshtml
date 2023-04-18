@@ -77,13 +77,7 @@
     <br />
 <h2>Chọn ghế</h2>
 <div class="body">
-    <div class="movie-container">
-        <label> Định dạng: </label>
-        <select id="movie">
-            <option value="50000">Phim 2D(50k)</option>
-            <option value="80000">Phim 3D(80k)</option>
-        </select>
-    </div>
+   
 
     @{
         if (TempData["thongbao"] != null)
@@ -111,10 +105,17 @@
     </ul>
     <div class="container">
         <div class="screen"></div>
-
         @using (Html.BeginForm("Index", "ThanhToan", FormMethod.Post))
         {
+            <div class="movie-container">
+                <label> Phương thức thanh toán: </label>
+                <select id="movie" name="Ma_TT">
+                @foreach(var item in ViewBag.thanhToan)
+                    {<option value=@item.Ma_TT>@item.TenTiengViet</option>}
+                </select>
+            </div>
             <hr />
+          
             var solan = 0;
             for (int i = 0; i < ViewBag.tbmaghe.Count / 13; i++)
             {
@@ -122,22 +123,16 @@
                     @for (int j = 0; j < 13; j++)
                     {
 
-
-
-
                         if (gheDaDat.Contains(ViewBag.tbmaghe[solan].Ma_PhongGhe))
                         {
                             if ((ViewBag.tbmaghe[solan].Ma_LoaiGhe).Equals("Thuong"))
                             {
-
                                 <input style="background-color:aqua" class="seat" type="checkbox" name="cho" value=" @ViewBag.tbmaghe[solan].Ma_PhongGhe" disabled="disabled" />
-
                             }
                             else if ((ViewBag.tbmaghe[solan].Ma_LoaiGhe).Equals("Vip"))
                             {
 
                                 <input style="background-color:aqua" class="seat" type="checkbox" name="cho" value=" @ViewBag.tbmaghe[solan].Ma_PhongGhe" disabled="disabled" />
-
                             }
                             else if ((ViewBag.tbmaghe[solan].Ma_LoaiGhe).Equals("Doi"))
                             {

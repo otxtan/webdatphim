@@ -12,19 +12,19 @@ namespace datphim.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class datphimchuanEntities : DbContext
     {
         public datphimchuanEntities()
             : base("name=datphimchuanEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tb_HoaDon> Tb_HoaDon { get; set; }
         public virtual DbSet<Tb_LichChieu_PhongChieu> Tb_LichChieu_PhongChieu { get; set; }
