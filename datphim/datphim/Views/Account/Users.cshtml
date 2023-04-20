@@ -1,0 +1,72 @@
+﻿@model datphim.Models.Tb_NguoiDung
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USER INFO</title>
+    <!-- <link rel="stylesheet" href="css/user.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container" style="padding:20px 0 150px 0 ">
+        <h2 style="margin-bottom: 50px;">Thông Tin Tài Khoản</h2>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home" style="font-size:20px ;">Thông tin tài khoản</a></li>
+            <li><a data-toggle="tab" href="#menu1" style="font-size:20px ;">Lịch sử đặt vé</a></li>
+            <li><a data-toggle="tab" href="#menu2" style="font-size:20px ;">Thay đổi thông tin tài khoản</a></li>
+            <li><a data-toggle="tab" href="#menu3" style="font-size:20px ;">Đổi mật khẩu</a></li>
+        </ul>
+
+        <div class="tab-content" style="margin-top: 50px; ">
+            <div id="home" class="tab-pane fade in active" style="padding-bottom: 150px">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Tên đăng nhập</th>
+                            <th>Họ tên</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> @Html.DisplayFor(model => model.UserName)</td>
+                            <td>@Html.DisplayFor(model => model.TenKH)</td>
+                            <td> @Html.DisplayFor(model => model.Email)</td>
+                            <td> @Html.DisplayFor(model => model.SDT)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            @{
+                Html.RenderPartial("History");
+            }
+            @{
+                Html.RenderPartial("EditUser");
+            }
+
+
+            @{
+                Html.RenderPartial("EditPass");
+            }
+
+        </div>
+    </div>
+
+
+</body>
+</html>
