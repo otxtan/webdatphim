@@ -16,7 +16,7 @@
         <!--   Kitchen Sink -->
         <div class="card">
             <div class="card-action">
-               Vé
+                Vé
             </div>
             <div class="card-content">
                 <div class="table-responsive">
@@ -24,13 +24,22 @@
                         <thead>
                             <tr>
                                 <th>
+                                    @Html.DisplayNameFor(model => model.Ma_ve)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Ma_HoaDon)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Tb_HoaDon.NgayTao)
+                                </th>
+                                <th>
                                     @Html.DisplayNameFor(model => model.Tb_HoaDon.UserName)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Tb_LichChieu_PhongChieu.Ma_PhongChieu)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Tb_PhongGhe.Ma_PhongChieu)
+                                    @Html.DisplayNameFor(model => model.Tb_PhongGhe.Ma_PhongGhe)
                                 </th>
                                 <th></th>
                             </tr>
@@ -40,13 +49,22 @@
                             {
                                 <tr>
                                     <td>
+                                        @Html.DisplayFor(modelItem => item.Ma_ve)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ma_HoaDon)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Tb_HoaDon.NgayTao)
+                                    </td>
+                                    <td>
                                         @Html.DisplayFor(modelItem => item.Tb_HoaDon.UserName)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Tb_LichChieu_PhongChieu.Ma_PhongChieu)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Tb_PhongGhe.Ma_PhongChieu)
+                                        @Html.DisplayFor(modelItem => item.Tb_PhongGhe.Ma_PhongGhe)
                                     </td>
                                     <td>
                                         @Html.ActionLink("Edit", "Edit", new { id = item.Ma_ve }, new { @class = "btn btn-info" }) |

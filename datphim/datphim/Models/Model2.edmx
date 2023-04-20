@@ -4,13 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="datphimchuan1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="dbo_Tb_ThanhToan">
-          <Property Name="Ma_TT" Type="nvarchar" MaxLength="50" />
-          <Property Name="TenTiengViet" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
+    <Schema Namespace="datphimchuan1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -59,7 +53,8 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
             <PropertyRef Name="UserName" />
           </Key>
           <Property Name="UserName" Type="char" MaxLength="50" Nullable="false" />
-          <Property Name="PassWord" Type="char" MaxLength="50" />
+          <Property Name="PassWord" Type="char" MaxLength="60" />
+          <Property Name="Salt" Type="nchar" MaxLength="50" />
           <Property Name="TenKH" Type="nvarchar" MaxLength="100" />
           <Property Name="SDT" Type="char" MaxLength="10" />
           <Property Name="NgaySinh" Type="date" />
@@ -340,8 +335,7 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
             <End Role="Tb_HoaDon" EntitySet="Tb_HoaDon" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="datphimchuan1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -402,13 +396,14 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
             <PropertyRef Name="UserName" />
           </Key>
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="PassWord" Type="String" MaxLength="60" FixedLength="true" Unicode="false" />
           <Property Name="TenKH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="NgaySinh" Type="DateTime" Precision="0" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
           <Property Name="available" Type="Boolean" />
           <NavigationProperty Name="Tb_HoaDon" Relationship="Self.FK__Tb_HoaDon__UserN__398D8EEE" FromRole="Tb_NguoiDung" ToRole="Tb_HoaDon" />
+          <Property Name="Salt" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Tb_PhanLoaiPhim">
           <Key>
@@ -754,6 +749,7 @@ warning 6013: The table/view 'datphimchuan1.dbo.dbo.Tb_ThanhToan' does not have 
           <EntitySetMapping Name="Tb_NguoiDung">
             <EntityTypeMapping TypeName="datphimchuan1Model.Tb_NguoiDung">
               <MappingFragment StoreEntitySet="Tb_NguoiDung">
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="PassWord" ColumnName="PassWord" />
                 <ScalarProperty Name="TenKH" ColumnName="TenKH" />

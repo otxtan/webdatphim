@@ -44,7 +44,9 @@
             </div>
             <p style="text-align:center"> HOẶC  </p>
             @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Email" })
+            @Html.ValidationMessageFor(model => model.UserName)
             @Html.PasswordFor(m => m.PassWord, new { @class = "form-control", @placeholder = "Password" })
+            @Html.ValidationMessageFor(model => model.PassWord)
 
             <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Đăng nhập</button>
             <a href="#" id="forgot_pswd">Quên mật khẩu?</a>

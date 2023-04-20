@@ -10,14 +10,16 @@ using datphim.Models;
 
 namespace datphim.Areas.admin.Controllers
 {
+    [customFilter]
     public class Tb_HoaDonController : Controller
     {
+
         private datphimchuanEntities db = new datphimchuanEntities();
 
         // GET: admin/Tb_HoaDon
         public ActionResult Index()
         {
-            var tb_HoaDon = db.Tb_HoaDon.Include(t => t.Tb_LichChieu_PhongChieu).Include(t => t.Tb_NguoiDung);
+            var tb_HoaDon = db.Tb_HoaDon.Include(t => t.Tb_LichChieu_PhongChieu).Include(t => t.Tb_NguoiDung).OrderByDescending(t => t.Ma_HoaDon);
             return View(tb_HoaDon.ToList());
         }
 
@@ -61,7 +63,7 @@ namespace datphim.Areas.admin.Controllers
             }
 
             ViewBag.Ma_LichChieu_PhongChieu = new SelectList(db.Tb_LichChieu_PhongChieu, "Ma_LichChieu_PhongChieu", "Ma_PhongChieu", tb_HoaDon.Ma_LichChieu_PhongChieu);
-            
+
             ViewBag.UserName = new SelectList(db.Tb_NguoiDung, "UserName", "PassWord", tb_HoaDon.UserName);
             return View(tb_HoaDon);
         }
@@ -79,7 +81,7 @@ namespace datphim.Areas.admin.Controllers
                 return HttpNotFound();
             }
             ViewBag.Ma_LichChieu_PhongChieu = new SelectList(db.Tb_LichChieu_PhongChieu, "Ma_LichChieu_PhongChieu", "Ma_LichChieu_PhongChieu", tb_HoaDon.Ma_LichChieu_PhongChieu);
-            
+
             ViewBag.UserName = new SelectList(db.Tb_NguoiDung, "UserName", "UserName", tb_HoaDon.UserName);
             ViewBag.Ma_TT = new SelectList(db.Tb_ThanhToan, "Ma_TT", "TenTiengViet", tb_HoaDon.Ma_TT);
             return View(tb_HoaDon);
@@ -94,17 +96,17 @@ namespace datphim.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(tb_HoaDon.NgayTao!=null)
+                if (tb_HoaDon.NgayTao != null)
                     tb_HoaDon.NgayTao = DateTime.Now;
                 db.Entry(tb_HoaDon).State = EntityState.Modified;
 
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            
+
 
             ViewBag.Ma_LichChieu_PhongChieu = new SelectList(db.Tb_LichChieu_PhongChieu, "Ma_LichChieu_PhongChieu", "Ma_PhongChieu", tb_HoaDon.Ma_LichChieu_PhongChieu);
-            
+
             ViewBag.UserName = new SelectList(db.Tb_NguoiDung, "UserName", "UserName", tb_HoaDon.UserName);
             return View(tb_HoaDon);
         }

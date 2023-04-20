@@ -1,0 +1,28 @@
+﻿@model datphim.Models.Tb_NguoiDung
+
+@{
+    ViewBag.Title = "change password";
+    Layout = "";
+}
+<div id="menu3" class="tab-pane fade">
+    <div class="title-info">
+        <h3>Thay Đổi Mật Khẩu</h3>
+    </div>
+
+    @using (Html.BeginForm("EditPass", "Account", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @* <div class="form-group">
+                <label>Mật Khẩu Hiện Tại:</label>
+                <input class="form-control" type="password" id="newP" name="passcu" placeholder="">
+            </div>*@
+        <div class="form-group">
+            <label>Mật Khẩu Mới:</label>
+            @Html.PasswordFor(model => model.PassWord, new { @class = "form-control", @placeholder = "Nhập PassWord mới" })
+            @Html.ValidationMessageFor(model => model.PassWord, "", new { @class = "text-danger" })
+            <p>- Chứa ít nhất 1 chữ cái thường<br />- 1 chữ cái hoa<br />- 1 số và có độ dài từ 8 ký tự trở lên</p>
+
+        </div>
+        <button type="submit" name="insertInfo" class="btn btn-primary">Đổi mật khẩu</button>
+    }
+</div>

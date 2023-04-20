@@ -1,0 +1,123 @@
+﻿@model IEnumerable<datphim.Models.Tb_Ve>
+
+
+
+@{
+    ViewBag.Title = "Index";
+
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<div class="d-flex flex-column " style="margin:auto;width:70%;padding: 50px 0 150px 0px;">
+
+    <h2 style="text-align:center">Tiến Hành Thanh Toán</h2>
+    <br />
+    <table class="table ">
+        <tr>
+            <th>Người dùng</th>
+            <th>Mã lịch chiếu</th>
+            <th>Giá tiền</th>
+            <th>Số lượng</th>
+            <th>Ngày Tạo</th>
+            <th>Thành tiền</th>
+        </tr>
+        <tr>
+            <td>@ViewBag.HoaDon[0].UserName</td>
+            <td>@ViewBag.HoaDon[0].Ma_LichChieu_PhongChieu</td>
+            <td> @ViewBag.HoaDon[0].GiaTien</td>
+            <td>  @ViewBag.HoaDon[0].SoLuong</td>
+            <td> @ViewBag.HoaDon[0].NgayTao</td>
+            <td> @ViewBag.HoaDon[0].ThanhTien</td>
+
+        </tr>
+
+    </table>
+    <br />
+
+    <h3>Mã Vé</h3>
+
+    <table class="table">
+        <tr>
+            <th>
+                Mã vé
+            </th>
+            <th>
+                Mã hóa đơn
+            </th>
+            <th>
+                Ngày chiếu
+            </th>
+            <th>
+                giờ chiếu
+            </th>
+
+            <th>
+                Tên ghế
+            </th>
+            <th>
+                Phòng chiếu
+            </th>
+        </tr>
+
+        @foreach (var item in ViewBag.tb_Ve1)
+        {
+            <tr>
+                <td>
+                    @item.Ma_ve
+                </td>
+                <td>
+                    &#35;@item.Ma_HoaDon
+                </td>
+                <td>
+                    @item.Tb_LichChieu_PhongChieu.NgayChieu
+                </td>
+                <td>
+                    @item.Tb_LichChieu_PhongChieu.GioChieu
+                </td>
+                <td>
+                    @item.Tb_PhongGhe.TenGhe
+                </td>
+                <td>
+                    @item.Tb_PhongGhe.Ma_PhongChieu
+                </td>
+
+            </tr>
+        }
+
+    </table>
+    <p>Lưu ý: nội dung chuyển khoản bao gồm mã đơn hàng</p>
+    <table class="table">
+        <tr>
+            <th>
+                phương thức thanh toán
+            </th>
+            <th>
+                Số tài khoản
+            </th>
+            <th>
+                Tên người nhận
+            </th>
+           
+        </tr>
+
+        @foreach (var item in ViewBag.tb_ThanhToan)
+        {
+            <tr>
+                <td>
+                    @item.TenTiengViet
+                </td>
+                <td>
+                    @item.SoTaiKhoan
+                </td>
+                <td>
+                    @item.TenNguoiNhan
+                </td>
+               
+
+            </tr>
+        }
+
+    </table>
+</div>
+

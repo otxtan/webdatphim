@@ -10,6 +10,7 @@ using datphim.Models;
 
 namespace datphim.Areas.admin.Controllers
 {
+    [customFilter]
     public class Tb_PhongGheController : Controller
     {
         private datphimchuanEntities db = new datphimchuanEntities();
@@ -17,10 +18,10 @@ namespace datphim.Areas.admin.Controllers
         // GET: admin/Tb_PhongGhe
         public ActionResult Index(Tb_PhongGhe tp1)
         {
-             var tb_PhongGhe = db.Tb_PhongGhe.Include(t => t.Tb_LoaiGhe).Include(t => t.Tb_Phong);
-               
-                tb_PhongGhe = (from s in tb_PhongGhe where s.Ma_PhongChieu.Contains(tp1.Ma_PhongChieu) select s);
-          
+            var tb_PhongGhe = db.Tb_PhongGhe.Include(t => t.Tb_LoaiGhe).Include(t => t.Tb_Phong);
+
+            tb_PhongGhe = (from s in tb_PhongGhe where s.Ma_PhongChieu.Contains(tp1.Ma_PhongChieu) select s);
+
             ViewBag.Ma_PhongChieu = new SelectList(db.Tb_Phong, "Ma_PhongChieu", "Ma_PhongChieu");
             return View(tb_PhongGhe.ToList());
         }

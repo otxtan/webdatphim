@@ -1,0 +1,34 @@
+﻿
+<div id="menu1" class="tab-pane fade">
+    <div class="col-sm-12">
+        <table id="historyBooking" class="table table-striped table-bordered dataTable no-footer" style="width:100%" role="grid" aria-describedby="historyBooking_info">
+            <thead>
+                <tr role="row">
+                    <th scope="col" class="sorting_asc" tabindex="0" aria-controls="historyBooking" rowspan="1" colspan="1" style="width: 60px;" aria-sort="ascending" aria-label="STT: activate to sort column descending">Vé</th>
+                    <th scope="col" class="sorting" tabindex="0" aria-controls="historyBooking" rowspan="1" colspan="1" style="width: 119px;" aria-label="Mã hóa đơn: activate to sort column ascending">Mã hóa đơn</th>
+                    <th scope="col" class="sorting" tabindex="0" aria-controls="historyBooking" rowspan="1" colspan="1" style="width: 119px;" aria-label="Tên Phim: activate to sort column ascending">Tên Phim</th>
+                    <th scope="col" class="sorting" tabindex="0" aria-controls="historyBooking" rowspan="1" colspan="1" style="width: 62px;" aria-label="Ghế: activate to sort column ascending">Ghế</th>
+                    <th scope="col" class="sorting" tabindex="0" aria-controls="historyBooking" rowspan="1" colspan="1" style="width: 61px;" aria-label="Rạp: activate to sort column ascending">Rạp</th>
+                    <th scope="col" class="sorting" tabindex="0" aria-controls="historyBooking" rowspan="1" colspan="1" style="width: 168px;" aria-label="Thời Gian Đặt: activate to sort column ascending">Thời Gian Đặt</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in ViewBag.ls)
+                    {
+                        <tr class="odd">
+                            <!-- <td valign="top" colspan="6" class="dataTables_empty">No data available in table</td> -->
+                            <td>@item.Ma_ve</td>
+                            <td>@item.Ma_HoaDon</td>
+                            <td>@item.Tb_LichChieu_PhongChieu.Tb_phim.TenPhim</td>
+                            <td>@item.Tb_PhongGhe.TenGhe</td>
+                            <td>@item.Tb_PhongGhe.Ma_PhongChieu</td>
+                            <td>@item.Tb_HoaDon.NgayTao</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

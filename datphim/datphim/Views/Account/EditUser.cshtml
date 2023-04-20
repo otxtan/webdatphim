@@ -1,0 +1,36 @@
+﻿
+@model datphim.Models.Tb_NguoiDung
+
+
+<div id="menu2" class="tab-pane fade">
+    <div class="container">
+        <div class="title-info">
+            <h3>Chỉnh Sửa Thông Tin Cá Nhân</h3>
+        </div>
+        @using (Html.BeginForm("EditUser", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <label for="name">Họ Và Tên:</label>
+                @Html.EditorFor(model => model.TenKH, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập họ và tên" } })
+                @Html.ValidationMessageFor(model => model.TenKH, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="sdt">Số điện thoại:</label>
+                @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập số điện thoại", @type = "tel", @pattern = @"\d{10}", @maxlength = "10" } })
+                @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="form-group">
+                <label for="age">email:</label>
+
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập Email" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+            <button type="submit" name="insertInfo" class="btn btn-primary">Cập Nhật Thông Tin</button>
+
+        }
+
+    </div>
+</div>
+
