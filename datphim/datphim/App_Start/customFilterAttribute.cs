@@ -23,8 +23,6 @@ namespace datphim
             }*/
             if (filterContext.HttpContext.Session["UserName"] == null)
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { area = "", controller = "Account", action = "Login" }));
-
-
             /* throw new NotImplementedException();*/
         }
         private bool IsUrlValid(Uri url)
@@ -33,7 +31,6 @@ namespace datphim
             {
                 return true;
             }
-
             return false;
         }
         public void OnException(ExceptionContext filterContext)
