@@ -38,6 +38,7 @@ namespace datphim.Controllers
         [HttpPost]
         public ActionResult Login([Bind(Include = "UserName,PassWord")] Tb_NguoiDung tb_NguoiDung)
         {
+
             string hashedPassword = "";
             string salt = "";
             if (ModelState.IsValidField("UserName") && ModelState.IsValidField("PassWord"))
@@ -70,11 +71,11 @@ namespace datphim.Controllers
         [OverrideAuthorization]
         public ActionResult Register()
         {
-            return RedirectToAction("Login");
+            return View("Login");
         }
         //Post register user
         [HttpPost]
-        /*[OverrideAuthorization]*/
+        [OverrideAuthorization]
         [ValidateAntiForgeryToken]
         public ActionResult Register([Bind(Include = "UserName,PassWord,TenKH,Email")] Tb_NguoiDung tb_NguoiDung)
         {
@@ -171,7 +172,7 @@ namespace datphim.Controllers
             string user = Session["UserName"].ToString();
             Tb_NguoiDung tb_NguoiDung = db.Tb_NguoiDung.Find(user);
             var queryHoaDon = (from s in db.Tb_HoaDon.Where(s => s.UserName == user).Where(s => s.TrangThai == true) select s);
-            var lichsu1 = (from v in db.Tb_Ve join h in queryHoaDon on v.Ma_HoaDon equals h.Ma_HoaDon select v);
+            var lichsu1 = (from v in db.Tb_Ve join h in queryHoaDon on v.Ma_HoaDon equals h.Ma_HoaDon select v).OrderByDescending(t => t.Ma_HoaDon);
             ViewBag.ls = lichsu1.ToList();
             tb_NguoiDung.SDT = tb_NguoiDung.SDT;
             tb_NguoiDung.Email = tb_NguoiDung.Email.Trim();

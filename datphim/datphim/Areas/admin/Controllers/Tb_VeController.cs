@@ -10,6 +10,7 @@ using datphim.Models;
 
 namespace datphim.Areas.admin.Controllers
 {
+    [customFilter]
     public class Tb_VeController : Controller
     {
         private datphimchuanEntities db = new datphimchuanEntities();
@@ -41,7 +42,7 @@ namespace datphim.Areas.admin.Controllers
         {
             ViewBag.Ma_HoaDon = new SelectList(db.Tb_HoaDon, "Ma_HoaDon", "UserName");
             ViewBag.Ma_LichChieu_PhongChieu = new SelectList(db.Tb_LichChieu_PhongChieu, "Ma_LichChieu_PhongChieu", "Ma_PhongChieu");
-            ViewBag.Ma_PhongGhe = new SelectList(db.Tb_PhongGhe, "Ma_PhongGhe", "Ma_PhongChieu");
+            ViewBag.Ma_PhongGhe = new SelectList(db.Tb_PhongGhe, "Ma_PhongGhe", "TenGhe");
             return View();
         }
 

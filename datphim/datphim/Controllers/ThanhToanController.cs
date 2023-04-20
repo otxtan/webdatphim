@@ -11,11 +11,12 @@ using datphim.Models;
 
 namespace datphim.Controllers
 {
+    [customFilter]
     public class ThanhToanController : Controller
     {
         // GET: ThanhToan
         private datphimchuanEntities db = new datphimchuanEntities();
-        public ActionResult Index()
+        /*public ActionResult Index()
         {
             string user = Session["UserName"].ToString();
             long maHD = Convert.ToInt64(((
@@ -35,7 +36,7 @@ namespace datphim.Controllers
             ViewBag.Hoadon = tb_HoaDon.ToList();
             ViewBag.tb_Ve1 = tb_Ve1.ToList();
             return View();
-        }
+        }*/
         // GET: xác nhận hóa đơn
 
         public ActionResult confirm()

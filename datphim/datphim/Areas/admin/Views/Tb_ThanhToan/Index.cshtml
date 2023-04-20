@@ -21,7 +21,7 @@
         <!--   Kitchen Sink -->
         <div class="card">
             <div class="card-action">
-                Vé
+                Hình thức thanh toán
             </div>
             <div class="card-content">
                 <div class="table-responsive">
@@ -47,25 +47,25 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Ma_TT)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TenTiengViet)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.SoTaiKhoan)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TenNguoiNhan)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.Ma_TT }, new { @class = "btn btn-info" }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.Ma_TT }, new { @class = "btn btn-primary" }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.Ma_TT }, new { @class = "btn btn-warning" })
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ma_TT)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TenTiengViet)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SoTaiKhoan)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TenNguoiNhan)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Ma_TT }, new { @class = "btn btn-info" }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.Ma_TT }, new { @class = "btn btn-primary" }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.Ma_TT }, new { @class = "btn btn-warning" })
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>

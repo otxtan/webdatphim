@@ -13,6 +13,7 @@ using System.Data.Entity.Validation;
 
 namespace datphim.Controllers
 {
+    [customFilter]
     public class HomeController : Controller
     {
         private datphimchuanEntities db = new datphimchuanEntities();
@@ -34,12 +35,14 @@ namespace datphim.Controllers
 
             return View();
         }
+        [OverrideAuthorization]
         public ActionResult Trangchu()
         {
             var tb_phim = from s in db.Tb_phim where s.available == true select s;
             return View(tb_phim.ToList());
 
         }
+        [OverrideAuthorization]
         public ActionResult Details(long? id)
         {
             if (id == null)
@@ -96,202 +99,202 @@ namespace datphim.Controllers
             return View(tb_maghe);
 
         }
-        public ActionResult DetailsLichChieu(long id)
+        /*public ActionResult DetailsLichChieu(long id)
         {
 
             var tb_lichchieutheomaphim = from s in db.Tb_LichChieu_PhongChieu where s.Ma_Phim == id select s;
 
             return PartialView();
-        }
-        // GET: admin/Tb_NguoiDung/Register
-        public ActionResult Register()
-        {
-            return RedirectToAction("Login");
-        }
+        }*/
+        /* // GET: admin/Tb_NguoiDung/Register
+         public ActionResult Register()
+         {
+             return RedirectToAction("Login");
+         }
 
-        // POST: admin/Tb_NguoiDung/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "UserName,PassWord,TenKH,Email")] Tb_NguoiDung tb_NguoiDung)
-        {
-            /*  try
-              {
+         // POST: admin/Tb_NguoiDung/Create
+         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+         [HttpPost]
+         [ValidateAntiForgeryToken]
+         public ActionResult Register([Bind(Include = "UserName,PassWord,TenKH,Email")] Tb_NguoiDung tb_NguoiDung)
+         {
+             *//*  try
+               {
 
-  */
-            if (ModelState.IsValid)
-            {
-                ViewBag.dangki = "";
-                string pass = tb_NguoiDung.PassWord.ToString().Trim();
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(pass, 10).ToString();
-                string f_password = GetMD5(pass);
-                tb_NguoiDung.PassWord = hashedPassword;
-
-
-                var data = db.Tb_NguoiDung.Where(s => s.UserName.Equals(tb_NguoiDung.UserName.ToString().Trim())).ToList();
-                if (data.Count() == 0)
-                {
-                    //add session
-                    TempData["dangki"] = "đăng kí thành công";
-                    db.Tb_NguoiDung.Add(tb_NguoiDung);
-                    db.SaveChanges();
-                    return RedirectToAction("Login");
-                }
-                else
-                {
-                    TempData["dangki"] = "username đã tồn tại";
-                    return RedirectToAction("Login");
-                }
-            }
-            /* }
-             catch (DbEntityValidationException ex)
+   *//*
+             if (ModelState.IsValid)
              {
-                 foreach (var error in ex.EntityValidationErrors)
+                 ViewBag.dangki = "";
+                 string pass = tb_NguoiDung.PassWord.ToString().Trim();
+                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(pass, 10).ToString();
+                 string f_password = GetMD5(pass);
+                 tb_NguoiDung.PassWord = hashedPassword;
+
+
+                 var data = db.Tb_NguoiDung.Where(s => s.UserName.Equals(tb_NguoiDung.UserName.ToString().Trim())).ToList();
+                 if (data.Count() == 0)
                  {
-                     foreach (var validationError in error.ValidationErrors)
-                     {
-                         System.Diagnostics.Debug.WriteLine("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
-                     }
+                     //add session
+                     TempData["dangki"] = "đăng kí thành công";
+                     db.Tb_NguoiDung.Add(tb_NguoiDung);
+                     db.SaveChanges();
+                     return RedirectToAction("Login");
+                 }
+                 else
+                 {
+                     TempData["dangki"] = "username đã tồn tại";
+                     return RedirectToAction("Login");
                  }
              }
+             *//* }
+              catch (DbEntityValidationException ex)
+              {
+                  foreach (var error in ex.EntityValidationErrors)
+                  {
+                      foreach (var validationError in error.ValidationErrors)
+                      {
+                          System.Diagnostics.Debug.WriteLine("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                      }
+                  }
+              }
+  *//*
+             return View("Login");
+         }
+
+         public ActionResult Login()
+         {
+             if (Session["UserName"] != null)
+             {
+                 return RedirectToAction("Trangchu");
+             }
+             else
+                 return View();
+         }
+
+         public ActionResult Users()
+         {
+             if (Session["UserName"] == null)
+             {
+                 return RedirectToAction("Login");
+             }
+
+             string user = Session["UserName"].ToString();
+             Tb_NguoiDung tb_NguoiDung = db.Tb_NguoiDung.Find(user);
+             var lichsu = db.Tb_Ve.Include(t => t.Tb_LichChieu_PhongChieu).Include(t => t.Tb_HoaDon).Include(t => t.Tb_PhongGhe).Where(t => t.Tb_HoaDon.UserName == user);
+             ViewBag.ls = lichsu.ToList();
+             return View(tb_NguoiDung);
+
+         }
+         public ActionResult History()
+         {
+             string user = Session["UserName"].ToString();
+             var tb_HoaDon = db.Tb_HoaDon.Include(t => t.Tb_LichChieu_PhongChieu).Include(t => t.Tb_NguoiDung).Where(s => s.UserName == user).Where(s => s.TrangThai == true);
+
+             return View(tb_HoaDon.ToList());
+
+         }
+         [HttpPost]
+         [ValidateAntiForgeryToken]
+         public ActionResult EditUser([Bind(Include = "TenKH,SDT,Email")] Tb_NguoiDung tb_NguoiDung)
+         {
+             if (Session["UserName"] == null)
+                 return RedirectToAction("Login", "Account", new { area = "" });
+             string user = Session["UserName"].ToString().Trim();
+
+             if (ModelState.IsValid)
+             {
+                 Tb_NguoiDung tb_NguoiDung1 = db.Tb_NguoiDung.Find(user);
+                 tb_NguoiDung1.TenKH = tb_NguoiDung.TenKH;
+                 tb_NguoiDung1.SDT = tb_NguoiDung.SDT;
+                 tb_NguoiDung1.Email = tb_NguoiDung.Email;
+                 db.Entry(tb_NguoiDung1).State = EntityState.Modified;
+                 db.SaveChanges();
+
+             }
+             return RedirectToAction("Users");
+         }
+
+         [HttpPost]
+         [ValidateAntiForgeryToken]
+         public ActionResult EditPass(string passcu, string passmoi)
+         {
+             if (Session["UserName"] == null)
+                 return RedirectToAction("Login", "Home", new { area = "" });
+             string user = Session["UserName"].ToString().Trim();
+
+             var f_password = GetMD5(passcu.Trim());
+             var f_password1 = GetMD5(passmoi.Trim());
+             var data = db.Tb_NguoiDung.Where(s => s.UserName.Equals(user) && s.PassWord.Equals(f_password)).ToList();
+             if (data.Count() > 0)
+             {
+
+                 Tb_NguoiDung tb_NguoiDung = db.Tb_NguoiDung.Find(user);
+
+                 tb_NguoiDung.PassWord = f_password1;
+                 db.Entry(tb_NguoiDung).State = EntityState.Modified;
+                 db.SaveChanges();
+
+
+
+                 return RedirectToAction("Logout");
+             }
+             else
+
+
+
+                 return RedirectToAction("Users");
+         }
+         public ActionResult Logout()
+         {
+             Session.Remove("UserName");
+             return RedirectToAction("TrangChu");
+         }
+
+
+
+         [HttpPost]
+         public ActionResult Login([Bind(Include = "UserName,PassWord")] Tb_NguoiDung tb_NguoiDung)
+         {
+
+             if (ModelState.IsValid)
+             {
+                 string pass = tb_NguoiDung.PassWord == null ? "" : tb_NguoiDung.PassWord.ToString().Trim();
+                 var f_password = GetMD5(pass);
+                 var data = db.Tb_NguoiDung.Where(s => s.UserName.Equals(tb_NguoiDung.UserName.ToString().Trim()) && s.PassWord.Equals(f_password)).ToList();
+                 if (data.Count() > 0)
+                 {
+                     //add session
+
+                     Session["UserName"] = data.FirstOrDefault().UserName;
+                     ViewBag.dangnhap = "thành công";
+                     if ((tb_NguoiDung.UserName.ToString().Trim()).Equals("admin"))
+                         return RedirectToAction("Index", "admin/Tb_Phim");
+                     return RedirectToAction("Trangchu");
+                 }
+                 else
+                 {
+                     ViewBag.dangnhap = "Đăng nhập thất bại";
+                     return View();
+                 }
+             }
+
+             return View("Login");
+         }
+         public static string GetMD5(string str)
+         {
+             MD5 md5 = new MD5CryptoServiceProvider();
+             byte[] fromData = Encoding.UTF8.GetBytes(str);
+             byte[] targetData = md5.ComputeHash(fromData);
+             string byte2String = null;
+
+             for (int i = 0; i < targetData.Length; i++)
+             {
+                 byte2String += targetData[i].ToString("x2");
+
+             }
+             return byte2String;
+         }
  */
-            return View("Login");
-        }
-
-        public ActionResult Login()
-        {
-            if (Session["UserName"] != null)
-            {
-                return RedirectToAction("Trangchu");
-            }
-            else
-                return View();
-        }
-
-        public ActionResult Users()
-        {
-            if (Session["UserName"] == null)
-            {
-                return RedirectToAction("Login");
-            }
-
-            string user = Session["UserName"].ToString();
-            Tb_NguoiDung tb_NguoiDung = db.Tb_NguoiDung.Find(user);
-            var lichsu = db.Tb_Ve.Include(t => t.Tb_LichChieu_PhongChieu).Include(t => t.Tb_HoaDon).Include(t => t.Tb_PhongGhe).Where(t => t.Tb_HoaDon.UserName == user);
-            ViewBag.ls = lichsu.ToList();
-            return View(tb_NguoiDung);
-
-        }
-        public ActionResult History()
-        {
-            string user = Session["UserName"].ToString();
-            var tb_HoaDon = db.Tb_HoaDon.Include(t => t.Tb_LichChieu_PhongChieu).Include(t => t.Tb_NguoiDung).Where(s => s.UserName == user).Where(s => s.TrangThai == true);
-
-            return View(tb_HoaDon.ToList());
-
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditUser([Bind(Include = "TenKH,SDT,Email")] Tb_NguoiDung tb_NguoiDung)
-        {
-            if (Session["UserName"] == null)
-                return RedirectToAction("Login", "Home", new { area = "" });
-            string user = Session["UserName"].ToString().Trim();
-
-            if (ModelState.IsValid)
-            {
-                Tb_NguoiDung tb_NguoiDung1 = db.Tb_NguoiDung.Find(user);
-                tb_NguoiDung1.TenKH = tb_NguoiDung.TenKH;
-                tb_NguoiDung1.SDT = tb_NguoiDung.SDT;
-                tb_NguoiDung1.Email = tb_NguoiDung.Email;
-                db.Entry(tb_NguoiDung1).State = EntityState.Modified;
-                db.SaveChanges();
-
-            }
-            return RedirectToAction("Users");
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditPass(string passcu, string passmoi)
-        {
-            if (Session["UserName"] == null)
-                return RedirectToAction("Login", "Home", new { area = "" });
-            string user = Session["UserName"].ToString().Trim();
-
-            var f_password = GetMD5(passcu.Trim());
-            var f_password1 = GetMD5(passmoi.Trim());
-            var data = db.Tb_NguoiDung.Where(s => s.UserName.Equals(user) && s.PassWord.Equals(f_password)).ToList();
-            if (data.Count() > 0)
-            {
-
-                Tb_NguoiDung tb_NguoiDung = db.Tb_NguoiDung.Find(user);
-
-                tb_NguoiDung.PassWord = f_password1;
-                db.Entry(tb_NguoiDung).State = EntityState.Modified;
-                db.SaveChanges();
-
-
-
-                return RedirectToAction("Logout");
-            }
-            else
-
-
-
-                return RedirectToAction("Users");
-        }
-        public ActionResult Logout()
-        {
-            Session.Remove("UserName");
-            return RedirectToAction("TrangChu");
-        }
-
-
-
-        [HttpPost]
-        public ActionResult Login([Bind(Include = "UserName,PassWord")] Tb_NguoiDung tb_NguoiDung)
-        {
-
-            if (ModelState.IsValid)
-            {
-                string pass = tb_NguoiDung.PassWord == null ? "" : tb_NguoiDung.PassWord.ToString().Trim();
-                var f_password = GetMD5(pass);
-                var data = db.Tb_NguoiDung.Where(s => s.UserName.Equals(tb_NguoiDung.UserName.ToString().Trim()) && s.PassWord.Equals(f_password)).ToList();
-                if (data.Count() > 0)
-                {
-                    //add session
-
-                    Session["UserName"] = data.FirstOrDefault().UserName;
-                    ViewBag.dangnhap = "thành công";
-                    if ((tb_NguoiDung.UserName.ToString().Trim()).Equals("admin"))
-                        return RedirectToAction("Index", "admin/Tb_Phim");
-                    return RedirectToAction("Trangchu");
-                }
-                else
-                {
-                    ViewBag.dangnhap = "Đăng nhập thất bại";
-                    return View();
-                }
-            }
-
-            return View("Login");
-        }
-        public static string GetMD5(string str)
-        {
-            MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] fromData = Encoding.UTF8.GetBytes(str);
-            byte[] targetData = md5.ComputeHash(fromData);
-            string byte2String = null;
-
-            for (int i = 0; i < targetData.Length; i++)
-            {
-                byte2String += targetData[i].ToString("x2");
-
-            }
-            return byte2String;
-        }
-
     }
 }

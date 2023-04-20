@@ -16,7 +16,7 @@
         <!--   Kitchen Sink -->
         <div class="card">
             <div class="card-action">
-                Lịch chiếu
+                Hóa đơn
             </div>
             <div class="card-content">
                 <div class="table-responsive">
@@ -65,47 +65,47 @@
                             @foreach (var item in Model)
                             {
 
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Ma_HoaDon)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UserName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Ma_LichChieu_PhongChieu)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.GiaTien)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.SoLuong)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.NgayTao)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ThanhTien)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Tb_LichChieu_PhongChieu.Ma_PhongChieu)
-                                </td>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ma_HoaDon)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ma_LichChieu_PhongChieu)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GiaTien)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SoLuong)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NgayTao)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ThanhTien)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Tb_LichChieu_PhongChieu.Ma_PhongChieu)
+                                    </td>
 
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Tb_NguoiDung.UserName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Tb_ThanhToan.TenTiengViet)
-                                </td>
-                                <td>
-                                    @item.TrangThai
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.Ma_HoaDon }, new { @class = "btn btn-info" }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.Ma_HoaDon }, new { @class = "btn btn-primary" }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.Ma_HoaDon }, new { @class = "btn btn-warning" })
-                                </td>
-                            </tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Tb_NguoiDung.UserName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Tb_ThanhToan.TenTiengViet)
+                                    </td>
+                                    <td>
+                                        @item.TrangThai
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Ma_HoaDon }, new { @class = "btn btn-info" }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.Ma_HoaDon }, new { @class = "btn btn-primary" }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.Ma_HoaDon }, new { @class = "btn btn-warning" })
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>

@@ -11,6 +11,7 @@ using datphim.Models;
 
 namespace datphim.Areas.admin.Controllers
 {
+    [customFilter]
     public class Tb_phimController : Controller
     {
         private datphimchuanEntities db = new datphimchuanEntities();
@@ -18,16 +19,16 @@ namespace datphim.Areas.admin.Controllers
         // GET: admin/Tb_phim
         public ActionResult Index()
         {
-          
-              
-             if (Session["UserName"] == null)
+
+
+            if (Session["UserName"] == null)
                 return RedirectToAction("Login", "Home", new { area = "" });
             string user = Session["UserName"].ToString().Trim();
             if (!user.Equals("admin"))
                 return RedirectToAction("TrangChu", "Home", new { area = "" });
-            
 
-                var tb_phim = db.Tb_phim.Include(t => t.Tb_PhanLoaiPhim).Include(t => t.Tb_TheLoai);
+
+            var tb_phim = db.Tb_phim.Include(t => t.Tb_PhanLoaiPhim).Include(t => t.Tb_TheLoai);
             return View(tb_phim.ToList());
         }
 
@@ -69,7 +70,7 @@ namespace datphim.Areas.admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Ma_Phim,TenPhim,ChatLuong,Ma_Loai,Ma_TheLoai,DaoDien,DienVien,NgayKhoiChieu,ThoiLuong,NgonNgu,NoiDung,AnhBia,Trailer,available")] Tb_phim tb_phim,HttpPostedFileBase Fileupload)
+        public ActionResult Create([Bind(Include = "Ma_Phim,TenPhim,ChatLuong,Ma_Loai,Ma_TheLoai,DaoDien,DienVien,NgayKhoiChieu,ThoiLuong,NgonNgu,NoiDung,AnhBia,Trailer,available")] Tb_phim tb_phim, HttpPostedFileBase Fileupload)
         {
             if (Session["UserName"] == null)
                 return RedirectToAction("Login", "Home", new { area = "" });
@@ -152,7 +153,7 @@ namespace datphim.Areas.admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Ma_Phim,TenPhim,ChatLuong,Ma_Loai,Ma_TheLoai,DaoDien,DienVien,NgayKhoiChieu,ThoiLuong,NgonNgu,NoiDung,AnhBia,Trailer,available")] Tb_phim tb_phim,HttpPostedFileBase Fileupload)
+        public ActionResult Edit([Bind(Include = "Ma_Phim,TenPhim,ChatLuong,Ma_Loai,Ma_TheLoai,DaoDien,DienVien,NgayKhoiChieu,ThoiLuong,NgonNgu,NoiDung,AnhBia,Trailer,available")] Tb_phim tb_phim, HttpPostedFileBase Fileupload)
         {
             if (Session["UserName"] == null)
                 return RedirectToAction("Login", "Home", new { area = "" });
@@ -162,7 +163,7 @@ namespace datphim.Areas.admin.Controllers
             if (Fileupload == null)
             {
                 var Nameimg = from s in db.Tb_phim where s.Ma_Phim == tb_phim.Ma_Phim select s.AnhBia;
-               // var filename = Path.GetFileName(Fileupload.FileName);
+                // var filename = Path.GetFileName(Fileupload.FileName);
                 tb_phim.AnhBia = (Nameimg.FirstOrDefault()).ToString();
 
             }
@@ -177,7 +178,7 @@ namespace datphim.Areas.admin.Controllers
                     {
                         ViewBag.ThongBao = "Hình Ảnh đã tồn tại";
                     }
-                  
+
                     else
                     {
                         Fileupload.SaveAs(path);

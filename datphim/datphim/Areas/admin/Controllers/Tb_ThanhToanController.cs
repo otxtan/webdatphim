@@ -10,6 +10,7 @@ using datphim.Models;
 
 namespace datphim.Areas.admin.Controllers
 {
+    [customFilter]
     public class Tb_ThanhToanController : Controller
     {
         private datphimchuanEntities db = new datphimchuanEntities();

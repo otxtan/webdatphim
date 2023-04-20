@@ -10,6 +10,7 @@ using datphim.Models;
 
 namespace datphim.Areas.admin.Controllers
 {
+    [customFilter]
     public class Tb_LichChieu_PhongChieuController : Controller
     {
         private datphimchuanEntities db = new datphimchuanEntities();
@@ -17,7 +18,7 @@ namespace datphim.Areas.admin.Controllers
         // GET: admin/Tb_LichChieu_PhongChieu
         public ActionResult Index()
         {
-            var tb_LichChieu_PhongChieu = db.Tb_LichChieu_PhongChieu.Include(t => t.Tb_phim).Include(t => t.Tb_Phong);
+            var tb_LichChieu_PhongChieu = db.Tb_LichChieu_PhongChieu.Include(t => t.Tb_phim).Include(t => t.Tb_Phong).OrderByDescending(t => t.Ma_LichChieu_PhongChieu);
             return View(tb_LichChieu_PhongChieu.ToList());
         }
 

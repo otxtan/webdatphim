@@ -28,6 +28,7 @@ namespace datphim.Models
         [Required(ErrorMessage = "Nhập tên người dùng")]
         public string TenKH { get; set; }
         public string SDT { get; set; }
+        public string Salt { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
         [Required]
         [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}", ErrorMessage = "email không hợp lệ")]

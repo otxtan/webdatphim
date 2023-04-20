@@ -54,6 +54,7 @@
           </Key>
           <Property Name="UserName" Type="char" MaxLength="50" Nullable="false" />
           <Property Name="PassWord" Type="char" MaxLength="60" />
+          <Property Name="Salt" Type="nchar" MaxLength="50" />
           <Property Name="TenKH" Type="nvarchar" MaxLength="100" />
           <Property Name="SDT" Type="char" MaxLength="10" />
           <Property Name="NgaySinh" Type="date" />
@@ -402,6 +403,7 @@
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
           <Property Name="available" Type="Boolean" />
           <NavigationProperty Name="Tb_HoaDon" Relationship="Self.FK__Tb_HoaDon__UserN__398D8EEE" FromRole="Tb_NguoiDung" ToRole="Tb_HoaDon" />
+          <Property Name="Salt" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Tb_PhanLoaiPhim">
           <Key>
@@ -747,6 +749,7 @@
           <EntitySetMapping Name="Tb_NguoiDung">
             <EntityTypeMapping TypeName="datphimchuan1Model.Tb_NguoiDung">
               <MappingFragment StoreEntitySet="Tb_NguoiDung">
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="PassWord" ColumnName="PassWord" />
                 <ScalarProperty Name="TenKH" ColumnName="TenKH" />
