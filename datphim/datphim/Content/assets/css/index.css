@@ -219,8 +219,9 @@ li {
         }
 
         .list-film .film img {
-            width: 269px;
-            height: 435px;
+            width: 100%;
+            aspect-ratio: 1/2;
+            object-fit: cover;
             transition: all 0.3s ease-in-out;
             display: block;
             border-radius: 20px;
