@@ -13,16 +13,11 @@
             <a href="~/Home/TrangChu">PHIM</a>
         </li>
         <li class="menu__list-item">
-            <a href="#">RẠP</a>
-        </li>
-        <li class="menu__list-item">
-            <a href="#">GIÁ VÉ</a>
-        </li>
-        <li class="menu__list-item">
             <a href="#">TIN MỚI VÀ ƯU ĐÃI</a>
         </li>
         <li class="menu__list-item">
             @{
+
                 if (Session["UserName"] != null)
                 {
                     @Html.ActionLink("Thành Viên", "Users", "Account")
