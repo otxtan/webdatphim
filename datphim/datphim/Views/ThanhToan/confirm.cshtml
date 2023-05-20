@@ -9,9 +9,9 @@
 }
 
 
-<div class="d-flex flex-column " style="margin:auto;width:70%;padding: 50px 0 150px 0px;">
+<div class="d-flex flex-column " style="margin:auto;width: 95%;padding: 50px 0 150px 0px;overflow-x: scroll;">
 
-    <h2 style="text-align:center">Tiến Hành Thanh Toán</h2>
+    <h3 style="text-align:center">Tiến Hành Thanh Toán</h3>
     <br />
     <table class="table ">
         <tr>
@@ -35,8 +35,8 @@
     </table>
     <br />
 
-    <h3>Mã Vé</h3>
-
+    <h3 style="text-align:center">Mã Vé</h3>
+    <br />
     <table class="table">
         <tr>
             <th>
@@ -86,7 +86,11 @@
         }
 
     </table>
+
     <p>Lưu ý: nội dung chuyển khoản bao gồm mã đơn hàng</p>
+
+    <h3 style="text-align:center">Thông tin thanh toán</h3>
+    <br />
     <table class="table">
         <tr>
             <th>
@@ -98,7 +102,7 @@
             <th>
                 Tên người nhận
             </th>
-           
+
         </tr>
 
         @foreach (var item in ViewBag.tb_ThanhToan)
@@ -113,7 +117,7 @@
                 <td>
                     @item.TenNguoiNhan
                 </td>
-               
+
 
             </tr>
         }

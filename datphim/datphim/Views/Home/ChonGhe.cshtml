@@ -75,118 +75,121 @@
     <!-------------------- Body ------------------>
 
     <br />
-<h2>Chọn ghế</h2>
-<div class="body">
-   
 
-    @{
-        if (TempData["thongbao"] != null)
-        {
-            <p>@TempData["thongbao"]</p>
-        }
-        List<long> gheDaDat = new List<long>();
-        gheDaDat = ViewBag.gheDaDat;
+    <div class="body">
+        <h2 class="text-center">Chọn ghế</h2>
 
-    }
 
-    <ul class="showcase">
-        <li>
-            <div class="seat"></div>
-            <small>Chưa chọn</small>
-        </li>
-        <li>
-            <div class="seat selected"></div>
-            <small>Ghế đang chọn</small>
-        </li>
-        <li>
-            <div class="seat sold"></div>
-            <small>Ghế đã bán</small>
-        </li>
-    </ul>
-    <div class="container">
-        <div class="screen"></div>
-        @using (Html.BeginForm("Index", "ThanhToan", FormMethod.Post))
-        {
-            <div class="movie-container">
-                <label> Phương thức thanh toán: </label>
-                <select id="movie" name="Ma_TT">
-                @foreach(var item in ViewBag.thanhToan)
-                    {<option value=@item.Ma_TT>@item.TenTiengViet</option>}
-                </select>
-            </div>
-            <hr />
-          
-            var solan = 0;
-            for (int i = 0; i < ViewBag.tbmaghe.Count / 13; i++)
+        @{
+            if (TempData["thongbao"] != null)
             {
-                <div class="row_checkbox">
-                    @for (int j = 0; j < 13; j++)
-                    {
+                <p>@TempData["thongbao"]</p>
+            }
+            List<long> gheDaDat = new List<long>();
+            gheDaDat = ViewBag.gheDaDat;
 
-                        if (gheDaDat.Contains(ViewBag.tbmaghe[solan].Ma_PhongGhe))
+        }
+
+        <ul class="showcase">
+            <li>
+                <div class="seat"></div>
+                <small>Chưa chọn</small>
+            </li>
+            <li>
+                <div class="seat selected"></div>
+                <small>Ghế đang chọn</small>
+            </li>
+            <li>
+                <div class="seat sold"></div>
+                <small>Ghế đã bán</small>
+            </li>
+        </ul>
+        <div class="container">
+            <div class="screen"></div>
+            @using (Html.BeginForm("Index", "ThanhToan", FormMethod.Post))
+            {
+                <div class="movie-container">
+                    <label> Phương thức thanh toán: </label>
+                    <select id="movie" name="Ma_TT">
+                        @foreach (var item in ViewBag.thanhToan)
                         {
-                            if ((ViewBag.tbmaghe[solan].Ma_LoaiGhe).Equals("Thuong"))
-                            {
-                                <input style="background-color:aqua" class="seat" type="checkbox" name="cho" value=" @ViewBag.tbmaghe[solan].Ma_PhongGhe" disabled="disabled" />
-                            }
-                            else if ((ViewBag.tbmaghe[solan].Ma_LoaiGhe).Equals("Vip"))
-                            {
-
-                                <input style="background-color:aqua" class="seat" type="checkbox" name="cho" value=" @ViewBag.tbmaghe[solan].Ma_PhongGhe" disabled="disabled" />
-                            }
-                            else if ((ViewBag.tbmaghe[solan].Ma_LoaiGhe).Equals("Doi"))
-                            {
-
-                                <input style="background-color:aqua" class="seat" type="checkbox" name="cho" value=" @ViewBag.tbmaghe[solan].Ma_PhongGhe" disabled="disabled" />
-
-                            }
-
+                            <option value=@item.Ma_TT>@item.TenTiengViet</option>
                         }
-                        else
-                        {
-
-                            if ((ViewBag.tbmaghe[solan].Ma_LoaiGhe).Equals("Thuong"))
-                            {
-
-                                <input class="seat" type="checkbox" name="cho" value=" @ViewBag.tbmaghe[solan].Ma_PhongGhe" style="input [type=checkbox] { accent-color: red; } " />
-                            }
-                            else if ((ViewBag.tbmaghe[solan].Ma_LoaiGhe).Equals("Vip"))
-                            {
-                                <input style="background-color:aqua" class="seat" type="checkbox" name="cho" value=" @ViewBag.tbmaghe[solan].Ma_PhongGhe" />
-                            }
-                            else if ((ViewBag.tbmaghe[solan].Ma_LoaiGhe).Equals("Doi"))
-                            {
-                                <input style="background-color:aqua" class="seat" type="checkbox" name="cho" value=" @ViewBag.tbmaghe[solan].Ma_PhongGhe" />
-                            }
-                        }
-                        solan++;
-
-
-
-                    }
+                    </select>
                 </div>
+                <hr />
+
+                var solan = 0;
+                for (int i = 0; i < ViewBag.tbmaghe.Count / 13; i++)
+                {
+                    <div class="row_checkbox">
+                        @for (int j = 0; j < 13; j++)
+                        {
+
+                            if (gheDaDat.Contains(ViewBag.tbmaghe[solan].Ma_PhongGhe))
+                            {
+                                if ((ViewBag.tbmaghe[solan].Ma_LoaiGhe).Equals("Thuong"))
+                                {
+                                    <input style="background-color:aqua" class="seat" type="checkbox" name="cho" value=" @ViewBag.tbmaghe[solan].Ma_PhongGhe" disabled="disabled" />
+                                }
+                                else if ((ViewBag.tbmaghe[solan].Ma_LoaiGhe).Equals("Vip"))
+                                {
+
+                                    <input style="background-color:aqua" class="seat" type="checkbox" name="cho" value=" @ViewBag.tbmaghe[solan].Ma_PhongGhe" disabled="disabled" />
+                                }
+                                else if ((ViewBag.tbmaghe[solan].Ma_LoaiGhe).Equals("Doi"))
+                                {
+
+                                    <input style="background-color:aqua" class="seat" type="checkbox" name="cho" value=" @ViewBag.tbmaghe[solan].Ma_PhongGhe" disabled="disabled" />
+
+                                }
+
+                            }
+                            else
+                            {
+
+                                if ((ViewBag.tbmaghe[solan].Ma_LoaiGhe).Equals("Thuong"))
+                                {
+
+                                    <input class="seat" type="checkbox" name="cho" value=" @ViewBag.tbmaghe[solan].Ma_PhongGhe" style="input [type=checkbox] { accent-color: red; } " />
+                                }
+                                else if ((ViewBag.tbmaghe[solan].Ma_LoaiGhe).Equals("Vip"))
+                                {
+                                    <input style="background-color:aqua" class="seat" type="checkbox" name="cho" value=" @ViewBag.tbmaghe[solan].Ma_PhongGhe" />
+                                }
+                                else if ((ViewBag.tbmaghe[solan].Ma_LoaiGhe).Equals("Doi"))
+                                {
+                                    <input style="background-color:aqua" class="seat" type="checkbox" name="cho" value=" @ViewBag.tbmaghe[solan].Ma_PhongGhe" />
+                                }
+                            }
+                            solan++;
+
+
+
+                        }
+                    </div>
+                }
+
+                <br />
+                <br />
+                <div class="form-group ">
+                    <div class="col-md-offset-2 col-md-10 d-flex flex-row-reverse ">
+                        <input type="submit" value="Thanh toán" class="btn btn-info" />
+                    </div>
+                </div>
+
             }
 
-            <br />
-            <br />
-            <div class="form-group ">
-                <div class="col-md-offset-2 col-md-10 d-flex flex-row-reverse ">
-                    <input type="submit" value="Thanh toán" class="btn btn-info" />
-                </div>
-            </div>
-
-        }
 
 
 
+        </div>
+
+        <!-- <p class="text">
+          Bạn đã chọn mua <span id="count">0</span> vé có giá: <span id="total">0</span><span> vnđ</span>
+        </p> -->
 
     </div>
-
-    <!-- <p class="text">
-      Bạn đã chọn mua <span id="count">0</span> vé có giá: <span id="total">0</span><span> vnđ</span>
-    </p> -->
-
-</div>
     <!-------------------- footer ------------------>
     <!-- Footer -->
 </body>

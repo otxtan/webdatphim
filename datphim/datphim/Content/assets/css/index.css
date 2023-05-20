@@ -15,6 +15,7 @@ li {
     /* margin-left: 11%;
     margin-right: 11%; */
     background-color: rgba(255, 255, 255, 0.704);
+    padding-bottom: 10px;
 }
 /* --------slider-------- */
 .slider {
@@ -34,7 +35,7 @@ li {
 
 .slider-content-left-top {
     width: 100%;
-    height: 550px;
+    height: 27em;
     position: relative;
     transition: all 0.5s ease;
 }
@@ -249,3 +250,74 @@ li {
     margin-right: auto;
     display: block;
 }
+/* Áp d?ng CSS khác cho màn hình có ?? r?ng nh? h?n ho?c b?ng 600px */
+@media (max-width: 600px) {
+
+    .slider-content-left-top {
+        width: 100%;
+        height: 9em;
+        position: relative;
+        transition: all 0.5s ease;
+    }
+
+    .nav_tab li a {
+        display: block;
+        /* padding: 6px 20px; */
+        text-decoration: none;
+        color: #171515;
+        position: relative;
+        font-weight: bold;
+        font-size: 1em;
+    }
+
+
+    .list-film {
+        /* width: 100%; */
+        display: flex;
+        flex-direction: column;
+        /* text-align: center; */
+        /* font-weight: bold; */
+        margin-bottom: 50px;
+    }
+
+        .list-film .film {
+            width: 100%;
+            padding: 1em;
+        }
+
+            .list-film .film img {
+                width: 100%;
+                height: 100%;
+                aspect-ratio: 1;
+                object-fit: cover;
+                transition: all 0.3s ease-in-out;
+                display: block;
+                border-radius: 20px;
+            }
+
+    .nav_tab {
+        display: inline-flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border-bottom: 3px solid #ddd;
+        width: 100%;
+        /* padding-left: 10%; */
+        /* padding-right: 10%; */
+        text-align: center;
+    }
+
+    .tabs {
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 40px;
+    }
+
+    .body {
+        /* margin-left: 11%;
+    margin-right: 11%; */
+        background-color: rgba(255, 255, 255, 0.704);
+        font-size: 0.9rem;
+    }
+}
+/* Áp d?ng CSS khác cho màn hình có ?? r?ng l?n h?n 600px */
