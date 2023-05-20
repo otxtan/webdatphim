@@ -67,8 +67,7 @@ namespace datphim.Controllers
         [HttpPost]
         public ActionResult Index(FormCollection formCollection)
         {
-            string lstGhe = formCollection["cho"];
-            string[] chongoi = lstGhe.Split(',');
+
             // kiem tra ghe ton tai ?
 
             string Ma_LichChieu_PhongChieu1 = "";
@@ -84,6 +83,14 @@ namespace datphim.Controllers
             {
                 Ma_LichChieu_PhongChieu1 = TempData["Ma_LichChieu_PhongChieu"].ToString();
                 Ma_PhongChieu = TempData["Ma_PhongChieu"].ToString();
+                string lstGhe = formCollection["cho"];
+                if (lstGhe == null)
+                {
+                    TempData["thongbao"] = "Vui lòng chọn chỗ!";
+                    return RedirectToAction("ChonGhe", "Home", new { Ma_LichChieu_PhongChieu = Convert.ToInt64(Ma_LichChieu_PhongChieu1), Ma_PhongChieu });
+                }
+                string[] chongoi = lstGhe.Split(',');
+
                 // tách chỗ
 
                 //tenChoNgoi = new string[chongoi.Length];

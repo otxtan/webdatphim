@@ -1,42 +1,47 @@
-﻿
+﻿@*<div class="logo">
+    </div>*@
 
-<div class="logo">
+<div class="header-head">
     <a href="~/home/trangchu"><img src="~/Content/assets/img/logo/logo.png"></a>
+    <button type="button" id="btn-menu" class="custom-button btn btn-default " data-toggle="collapse" data-target="#demo"><i class="fa-solid fa-bars fa-2xl"></i></button>
+
 </div>
+<div id="demo" class="collapse header-body">
+    <nav class="menu">
+        <ul class="menu__list">
+            <li class="menu__list-item">
+                <a href="#">LỊCH CHIẾU THEO RẠP</a>
+            </li>
+            <li class="menu__list-item">
+                <a href="~/Home/TrangChu">PHIM</a>
+            </li>
+            <li class="menu__list-item">
+                <a href="#">TIN MỚI VÀ ƯU ĐÃI</a>
+            </li>
+            <li class="menu__list-item">
+                @{
 
-<nav class="menu">
-    <ul class="menu__list">
-        <li class="menu__list-item">
-            <a href="#">LỊCH CHIẾU THEO RẠP</a>
-        </li>
-        <li class="menu__list-item">
-            <a href="~/Home/TrangChu">PHIM</a>
-        </li>
-        <li class="menu__list-item">
-            <a href="#">TIN MỚI VÀ ƯU ĐÃI</a>
-        </li>
-        <li class="menu__list-item">
-            @{
-
-                if (Session["UserName"] != null)
-                {
-                    @Html.ActionLink("Thành Viên", "Users", "Account")
+                    if (Session["UserName"] != null)
+                    {
+                        @Html.ActionLink("TÀI KHOẢN", "Users", "Account")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("TÀI KHOẢN", "Login", "Account")
+                    }
                 }
-                else
-                {
-                    @Html.ActionLink("Thành Viên", "Login", "Account")
-                }
-            }
 
-        </li>
-        <li class="menu__list-item">
-            @{
-                if (Session["UserName"] != null)
-                {
-                    @Html.ActionLink("Đăng xuất", "Logout", "Account")
+            </li>
+            <li class="menu__list-item">
+                @{
+                    if (Session["UserName"] != null)
+                    {
+                        @Html.ActionLink("ĐĂNG XUẤT", "Logout", "Account")
+                    }
                 }
-            }
 
-        </li>
-    </ul>
-</nav>
+            </li>
+        </ul>
+
+    </nav>
+</div>
