@@ -4635,7 +4635,6 @@
       <DependentUpon>Model2.edmx</DependentUpon>
     </Content>
     <Content Include="bin\datphim.dll.config" />
-    <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -4690,6 +4689,7 @@
     <Folder Include="Areas\user\Data\" />
     <Folder Include="Areas\user\Views\Shared\" />
     <Folder Include="Content\assets\images\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

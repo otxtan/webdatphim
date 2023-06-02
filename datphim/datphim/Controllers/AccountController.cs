@@ -199,10 +199,32 @@ namespace datphim.Controllers
                     DateTime expiration = DateTime.Now.AddMinutes(15); // Thời hạn là 15 phút
                     CodeInfo codeInfo = new CodeInfo { Code = userCode, Expiration = expiration };
                     userCodeMap.Add(email, codeInfo);
+
                     var cachedDictionary = HttpContext.Cache["Dictionary"] as Dictionary<string, CodeInfo>;
                     if (cachedDictionary != null)
                     {
-                        cachedDictionary.Add(email, codeInfo);
+                        foreach (var entry in cachedDictionary.ToList())
+                        {
+
+                            CodeInfo cI = entry.Value;
+                            string code = codeInfo.Code;
+                            DateTime expirationTime = cI.Expiration;
+
+                            if (expirationTime <= DateTime.Now)
+                            {
+                                cachedDictionary.Remove(entry.Key);
+                            }
+                        }
+                        if (!cachedDictionary.ContainsKey(email))
+                        {
+                            cachedDictionary.Add(email, codeInfo);
+                        }
+                        else
+                        {
+                            cachedDictionary.Remove(email);
+                            cachedDictionary.Add(email, codeInfo);
+                        }
+
                         HttpContext.Cache["Dictionary"] = cachedDictionary;
                     }
                     else
