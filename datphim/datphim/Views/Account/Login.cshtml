@@ -33,9 +33,12 @@
 
         @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-signin" }))
         {
-            <label>@TempData["dangki"]</label>
 
-            <label>@ViewBag.dangnhap</label>
+            <div class="d-flex justify-content-center mb-3">
+                <p class="text-info">@TempData["notification"]</p>
+            </div>
+
+            @*<label>@ViewBag.dangnhap</label>*@
             @Html.AntiForgeryToken()
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> ĐĂNG NHẬP</h1>
             <div class="social-login">
@@ -58,8 +61,26 @@
 
 
 
-        <form action="/reset/password/" class="form-reset">
-            <input type="email" id="resetEmail" class="form-control" placeholder="Email" required="" autofocus="">
+        <form action="/Account/ForgetPassWord" method="post" class="form-reset">
+            <div class="form-group">
+                <label for="email">email</label>
+                <input type="email" class="form-control" id="emailInput" name="emailInput" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Mã xác thực:</label>
+                <input type="text" class="form-control" id="confirmCode" name="confirmCode" required>
+                <br />
+                <button id="sendButton" onclick="sendCode()" class="btn btn-primary">Gửi mã</button>
+            </div>
+            <div class="form-group">
+                <label for="newPassword">Mật khẩu mới:</label>
+                <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Xác nhận mật khẩu mới:</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+            </div>
+
             <button class="btn btn-primary btn-block" type="submit">Quên mật khẩu</button>
             <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Trở lại</a>
         </form>
@@ -118,9 +139,48 @@
                 })g" target="_blank" style="color:black">
             </a>
         </p>*@
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>*@
     <script src="~/Content/assets/js/login.js"></script>
+    <script>
+        function sendCode() {
+            // Vô hiệu hóa nút gửi
+            document.getElementById("sendButton").disabled = true;
+            var email = document.getElementById("emailInput").value;
+
+            // Gửi yêu cầu AJAX
+            $.ajax({
+                type: "POST",
+                url: "/Account/SendCode", // Đường dẫn tới action SendCode trong controller Account
+                data: { email: email },
+                success: function () {
+                    // Khi yêu cầu gửi mã thành công
+                    alert("Mã đã được gửi đi!");
+                    startTimer(); // Bắt đầu đếm thời gian
+                },
+                error: function () {
+                    // Khi xảy ra lỗi
+                    alert("Đã xảy ra lỗi. Vui lòng thử lại sau!");
+                    document.getElementById("sendButton").disabled = false; // Kích hoạt lại nút gửi
+                }
+            });
+        }
+
+        // Đếm thời gian và cập nhật nút gửi
+        function startTimer() {
+            var seconds = 59; // Thời gian đợi (59 giây)
+            var timer = setInterval(function () {
+                document.getElementById("sendButton").innerHTML = "Vui lòng đợi " + seconds + "s"; // Hiển thị thời gian đợi
+                seconds--;
+
+                if (seconds < 0) {
+                    clearInterval(timer); // Dừng đếm thời gian
+                    document.getElementById("sendButton").innerHTML = "Gửi mã"; // Đổi lại nội dung nút
+                    document.getElementById("sendButton").disabled = false; // Kích hoạt lại nút gửi
+                }
+            }, 1000); // Đếm thời gian mỗi giây (1000ms)
+        }
+    </script>
 
 </body>
 </html>

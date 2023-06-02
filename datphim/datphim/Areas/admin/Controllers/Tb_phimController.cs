@@ -86,7 +86,7 @@ namespace datphim.Areas.admin.Controllers
                 if (ModelState.IsValid)
                 {
                     var filename = Path.GetFileName(Fileupload.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/images"), filename);
+                    var path = Path.Combine(Server.MapPath("~/Content/assets/images"), filename);
                     /*
                     var filename_2 = Path.GetFileName(Fileupload_2.FileName);
                     var path_2 = Path.Combine(Server.MapPath("~/Content/images"), filename);
@@ -172,7 +172,7 @@ namespace datphim.Areas.admin.Controllers
                 if (ModelState.IsValid)
                 {
                     var filename = Path.GetFileName(Fileupload.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/images"), filename);
+                    var path = Path.Combine(Server.MapPath("~/Content/assets/images"), filename);
 
                     if (System.IO.File.Exists(path))
                     {
