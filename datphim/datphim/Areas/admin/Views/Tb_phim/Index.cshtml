@@ -8,7 +8,7 @@
 <hr />
 
 <p>
-    @Html.ActionLink("Thêm mới", "Create",null,new {@class="btn btn-default" })
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-default" })
 </p>
 
 
@@ -64,61 +64,61 @@
                                     available
                                 </th>
                                 <th>
-                                    
+
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TenPhim)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ChatLuong)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DaoDien)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DienVien)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.NgayKhoiChieu)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ThoiLuong)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.NgonNgu)
-                                </td>
-                                <td>
-                                    <p style=" width: 300px; overflow: hidden; text-overflow: ellipsis; line-height: 20px; -webkit-line-clamp: 5; display: -webkit-box; -webkit-box-orient: vertical;">@Html.DisplayFor(modelItem => item.NoiDung)</p>
-                                </td>
-                                <td>
-                                    <img src="~/Content/images/@Html.DisplayFor(modelItem => item.AnhBia)" alt="ảnh bìa" style="width:100%" />
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TenPhim)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ChatLuong)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DaoDien)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DienVien)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NgayKhoiChieu)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ThoiLuong)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NgonNgu)
+                                    </td>
+                                    <td>
+                                        <p style=" width: 300px; overflow: hidden; text-overflow: ellipsis; line-height: 20px; -webkit-line-clamp: 5; display: -webkit-box; -webkit-box-orient: vertical;">@Html.DisplayFor(modelItem => item.NoiDung)</p>
+                                    </td>
+                                    <td>
+                                        <img src="~/Content/assets/images/@Html.DisplayFor(modelItem => item.AnhBia)" alt="ảnh bìa" style="width:100%" />
 
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Trailer)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Tb_PhanLoaiPhim.TenTiengViet)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Tb_TheLoai.TenTiengViet)
-                                </td>
-                                <td>
-                                   
-                                    @item.available
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Sửa", "Edit", new { id = item.Ma_Phim }, new { @class = "btn btn-info" }) |
-                                    @Html.ActionLink("Thông tin", "Details", new { id = item.Ma_Phim }, new { @class = "btn btn-primary" }) |
-                                    @Html.ActionLink("Xóa", "Delete", new { id = item.Ma_Phim }, new { @class = "btn btn-warning" })
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Trailer)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Tb_PhanLoaiPhim.TenTiengViet)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Tb_TheLoai.TenTiengViet)
+                                    </td>
+                                    <td>
+
+                                        @item.available
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Sửa", "Edit", new { id = item.Ma_Phim }, new { @class = "btn btn-info" }) |
+                                        @Html.ActionLink("Thông tin", "Details", new { id = item.Ma_Phim }, new { @class = "btn btn-primary" }) |
+                                        @Html.ActionLink("Xóa", "Delete", new { id = item.Ma_Phim }, new { @class = "btn btn-warning" })
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>

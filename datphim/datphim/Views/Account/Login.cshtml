@@ -63,7 +63,7 @@
 
         <form action="/Account/ForgetPassWord" method="post" class="form-reset">
             <div class="form-group">
-                <label for="email">email</label>
+                <label for="email">Email:</label>
                 <input type="email" class="form-control" id="emailInput" name="emailInput" placeholder="Email" required>
             </div>
             <div class="form-group">
@@ -99,7 +99,7 @@
 
             <p style="text-align:center">HOẶC</p>
             @Html.AntiForgeryToken()
-            @Html.EditorFor(m => m.UserName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(m => m.UserName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập username" } })
             @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
 
             @Html.PasswordFor(m => m.PassWord, new { @id = "user-pass", @class = "form-control", @placeholder = "Nhập mật khẩu" })

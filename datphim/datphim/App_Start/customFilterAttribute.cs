@@ -13,7 +13,7 @@ namespace datphim
 
         public void OnAuthorization(AuthorizationContext filterContext)
         {
-            var requestUrl = filterContext.HttpContext.Request.Url;
+            /*var requestUrl = filterContext.HttpContext.Request.Url;*/
 
             // Kiểm tra xem đường dẫn của request có phù hợp hay không
             /*if (!IsUrlValid(requestUrl))
@@ -25,18 +25,19 @@ namespace datphim
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { area = "", controller = "Account", action = "Login" }));
             /* throw new NotImplementedException();*/
         }
-        private bool IsUrlValid(Uri url)
+        /*private bool IsUrlValid(Uri url)
         {
             if (url.AbsolutePath.StartsWith("/", StringComparison.OrdinalIgnoreCase))
             {
                 return true;
             }
             return false;
-        }
+        }*/
         public void OnException(ExceptionContext filterContext)
         {
-            filterContext.Result = new ViewResult { ViewName = "Error" };
-            filterContext.ExceptionHandled = true;
+            /*filterContext.Result = new ViewResult { ViewName = "Error" };*/
+            /*filterContext.ExceptionHandled = true;*/
+            /*throw new Exception();*/
             /*throw new NotImplementedException();*/
         }
 
