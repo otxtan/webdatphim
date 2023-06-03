@@ -2307,45 +2307,8 @@
     <Content Include="Areas\admin\Content\assets\materialize\css\materialize.min.css" />
     <Content Include="Areas\admin\Content\assets\materialize\js\materialize.js" />
     <Content Include="Areas\admin\Content\assets\materialize\js\materialize.min.js" />
-    <Content Include="bin\Antlr3.Runtime.dll" />
-    <Content Include="bin\Antlr3.Runtime.pdb" />
-    <Content Include="bin\BCrypt.Net-Next.dll" />
-    <Content Include="bin\BCrypt.Net-Next.xml" />
-    <Content Include="bin\datphim.dll" />
-    <Content Include="bin\datphim.pdb" />
-    <Content Include="bin\EntityFramework.dll" />
-    <Content Include="bin\EntityFramework.SqlServer.dll" />
-    <Content Include="bin\EntityFramework.SqlServer.xml" />
-    <Content Include="bin\EntityFramework.xml" />
-    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
-    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
-    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
-    <Content Include="bin\Newtonsoft.Json.dll" />
-    <Content Include="bin\Newtonsoft.Json.xml" />
-    <Content Include="bin\System.Buffers.dll" />
-    <Content Include="bin\System.Buffers.xml" />
-    <Content Include="bin\System.Memory.dll" />
-    <Content Include="bin\System.Memory.xml" />
-    <Content Include="bin\System.Numerics.Vectors.dll" />
-    <Content Include="bin\System.Numerics.Vectors.xml" />
-    <Content Include="bin\System.Runtime.CompilerServices.Unsafe.dll" />
-    <Content Include="bin\System.Runtime.CompilerServices.Unsafe.xml" />
-    <Content Include="bin\System.Web.Helpers.dll" />
-    <Content Include="bin\System.Web.Helpers.xml" />
-    <Content Include="bin\System.Web.Mvc.dll" />
-    <Content Include="bin\System.Web.Mvc.xml" />
-    <Content Include="bin\System.Web.Optimization.dll" />
-    <Content Include="bin\System.Web.Optimization.xml" />
-    <Content Include="bin\System.Web.Razor.dll" />
-    <Content Include="bin\System.Web.Razor.xml" />
-    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
-    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
-    <Content Include="bin\System.Web.WebPages.dll" />
-    <Content Include="bin\System.Web.WebPages.Razor.dll" />
-    <Content Include="bin\System.Web.WebPages.Razor.xml" />
-    <Content Include="bin\System.Web.WebPages.xml" />
-    <Content Include="bin\WebGrease.dll" />
     <Content Include="Content\assets\css\bookingticket.css" />
+    <Content Include="Content\assets\images\wakada.jpg" />
     <Content Include="Content\assets\js\bookingticket.js" />
     <Content Include="Content\assets\css\bookve.css" />
     <Content Include="Content\assets\css\film.css" />
@@ -4635,7 +4598,6 @@
     <Content Include="Models\Model2.edmx.diagram">
       <DependentUpon>Model2.edmx</DependentUpon>
     </Content>
-    <Content Include="bin\datphim.dll.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -4689,7 +4651,8 @@
     <Folder Include="Areas\user\Controllers\" />
     <Folder Include="Areas\user\Data\" />
     <Folder Include="Areas\user\Views\Shared\" />
-    <Folder Include="Content\assets\images\" />
+    <Folder Include="bin\" />
+    <Folder Include="Content\assets\imgFilm\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>

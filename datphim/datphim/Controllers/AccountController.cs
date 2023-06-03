@@ -308,7 +308,8 @@ namespace datphim.Controllers
                         TempData["notification"] = "Mật khẩu không khớp";
                         return RedirectToAction("login");
                     }
-
+                    cachedDictionary.Remove(emailInput);
+                    HttpContext.Cache["Dictionary"] = cachedDictionary;
 
                     string salt = "";
                     string pass = "";
