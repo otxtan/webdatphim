@@ -318,7 +318,10 @@ namespace datphim.Controllers
                     salt = user.Salt;
                     if (salt != null)
                         pass = BCrypt.Net.BCrypt.HashPassword(newPassword.Trim(), salt.Trim()).ToString();
-                    user.PassWord = pass;
+                    user.TenKH = user.TenKH.Trim();
+                    user.Email = user.Email.Trim();
+
+                    user.PassWord = pass.Trim();
                     db.SaveChanges();
 
 
