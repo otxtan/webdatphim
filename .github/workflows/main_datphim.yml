@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'datphim'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B5D26B5172EA4FA894896D174EBA6005 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3DE9F333B12F4EA8A52EB383A57C3E19 }}
           package: .
