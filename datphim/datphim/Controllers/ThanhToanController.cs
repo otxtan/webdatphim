@@ -16,27 +16,41 @@ namespace datphim.Controllers
     {
         // GET: ThanhToan
         private datphimchuanEntities db = new datphimchuanEntities();
-        /*public ActionResult Index()
+        [HttpPost]
+        public ActionResult successful(FormCollection formCollection)
         {
-            string user = Session["UserName"].ToString();
-            long maHD = Convert.ToInt64(((
-                from s in db.Tb_HoaDon.OrderByDescending(s => s.Ma_HoaDon)
-                where s.UserName == user
-                select s.Ma_HoaDon)).FirstOrDefault());
+            string username = formCollection["username"];
+            long mahd = Convert.ToInt64(formCollection["mahd"]);
+            long confirm = Convert.ToInt64(formCollection["confirm"]);
+            /*string user = Session["UserName"].ToString();*/
+
+            var Hd = db.Tb_HoaDon.FirstOrDefault(hd => hd.Ma_HoaDon == mahd);
+            if (confirm == 1)
+            {
+                db.Entry(Hd).Property(hd => hd.TrangThai).IsModified = true;
+                db.SaveChanges();
+                ViewBag.ketqua = "Thanh Toán Thành Công";
+
+            }
+            else
+            {
+                ViewBag.ketqua = "Thanh Toán Thất Bại";
+            }
+
             var tb_Ve1 = db.Tb_Ve.
                 Include(t => t.Tb_HoaDon).
                 Include(t => t.Tb_LichChieu_PhongChieu).
                 Include(t => t.Tb_PhongGhe).
-                Where(s => s.Ma_HoaDon == maHD);
+                Where(s => s.Ma_HoaDon == mahd);
             var tb_HoaDon = db.Tb_HoaDon.
                 Include(t => t.Tb_LichChieu_PhongChieu).
                 Include(t => t.Tb_NguoiDung).
-                Where(s => s.UserName == user).
-                Where(s => s.Ma_HoaDon == maHD);
+                Where(s => s.UserName == username).
+                Where(s => s.Ma_HoaDon == mahd);
             ViewBag.Hoadon = tb_HoaDon.ToList();
-            ViewBag.tb_Ve1 = tb_Ve1.ToList();
-            return View();
-        }*/
+            /* ViewBag.tb_Ve1 = tb_Ve1.ToList();*/
+            return View(tb_Ve1.ToList());
+        }
         // GET: xác nhận hóa đơn
 
         public ActionResult confirm()
